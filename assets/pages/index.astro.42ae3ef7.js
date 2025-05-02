@@ -1,7 +1,7 @@
 /* empty css                                       */import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute, f as renderComponent } from '../astro.1a419e99.js';
 import 'html-escaper';
 import 'clsx';
-import { $ as $$Navbar, a as $$BaseLayout } from './blog-meta-analysis.astro.eeddada5.js';
+import { $ as $$Navbar, a as $$BaseLayout } from './blog-meta-analysis.astro.a36630e0.js';
 /* empty css                          */
 const $$Astro$4 = createAstro("https://sudarioroberto.github.io");
 const $$Button = createComponent(($$result, $$props, $$slots) => {
@@ -405,7 +405,7 @@ Our research connects gut microbiome science with practical feeding strategies f
 }, "C:/Users/sudar/micropig-website/src/components/Footer.astro", void 0);
 
 const $$Index = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": "MicroPig Innovations", "description": "Transforming swine health through microbiome science and collaborative research at the University of Minnesota." }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Navbar", $$Navbar, {})}  ${renderComponent($$result2, "Hero", $$Hero, {})} ${renderComponent($$result2, "ValueProposition", $$ValueProposition, {})} ${renderComponent($$result2, "Research", $$Research, {})} ${renderComponent($$result2, "Impact", $$Impact, {})} ${renderComponent($$result2, "Approach", $$Approach, {})} ${renderComponent($$result2, "Stats", $$Stats, {})} ${renderComponent($$result2, "Team", $$Team, {})} ${renderComponent($$result2, "Resources", $$Resources, {})} ${renderComponent($$result2, "Newsletter", $$Newsletter, {})} ${renderComponent($$result2, "Contact", $$ContactSection, {})} ${renderComponent($$result2, "Footer", $$Footer, {})} ` })}`;
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": "Swine Microbiome Research", "description": "Transforming swine health through microbiome science and collaborative research at the University of Minnesota." }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Navbar", $$Navbar, {})}  ${renderComponent($$result2, "Hero", $$Hero, {})} ${renderComponent($$result2, "ValueProposition", $$ValueProposition, {})} ${renderComponent($$result2, "Research", $$Research, {})} ${renderComponent($$result2, "Impact", $$Impact, {})} ${renderComponent($$result2, "Approach", $$Approach, {})} ${renderComponent($$result2, "Stats", $$Stats, {})} ${renderComponent($$result2, "Team", $$Team, {})} ${renderComponent($$result2, "Resources", $$Resources, {})} ${renderComponent($$result2, "Newsletter", $$Newsletter, {})} ${renderComponent($$result2, "Contact", $$ContactSection, {})} ${renderComponent($$result2, "Footer", $$Footer, {})} ` })}`;
 }, "C:/Users/sudar/micropig-website/src/pages/index.astro", void 0);
 
 const $$file = "C:/Users/sudar/micropig-website/src/pages/index.astro";

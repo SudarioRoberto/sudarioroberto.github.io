@@ -6,8 +6,8 @@ const $$Astro$3 = createAstro("https://sudarioroberto.github.io");
 const $$BaseLayout = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
   Astro2.self = $$BaseLayout;
-  Astro2.props;
-  return renderTemplate`<html lang="en" data-astro-cid-37fxchfa> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator"${addAttribute(Astro2.generator, "content")}><title>Astro Basics</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">${renderHead()}</head> <body data-astro-cid-37fxchfa> ${renderSlot($$result, $$slots["default"])} </body></html>`;
+  const { title, description } = Astro2.props;
+  return renderTemplate`<html lang="en" data-astro-cid-37fxchfa> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><!-- Basic favicon --><link rel="icon" type="image/svg+xml" href="/favicon.svg"><!-- Apple Touch Icon --><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><!-- Android/Chrome --><link rel="manifest" href="/site.webmanifest"><meta name="generator"${addAttribute(Astro2.generator, "content")}><title>${title || "MicroPig | Swine Microbiome Research"}</title><meta name="description"${addAttribute(description || "Transforming swine production through microbiome science and research at the University of Minnesota.", "content")}><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">${renderHead()}</head> <body data-astro-cid-37fxchfa> ${renderSlot($$result, $$slots["default"])} </body></html>`;
 }, "C:/Users/sudar/micropig-website/src/layouts/BaseLayout.astro", void 0);
 
 const $$Astro$2 = createAstro("https://sudarioroberto.github.io");
@@ -106,10 +106,10 @@ const $$file = "C:/Users/sudar/micropig-website/src/pages/blog-meta-analysis.ast
 const $$url = "/blog-meta-analysis";
 
 const blogMetaAnalysis = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-	__proto__: null,
-	default: $$BlogMetaAnalysis,
-	file: $$file,
-	url: $$url
+  __proto__: null,
+  default: $$BlogMetaAnalysis,
+  file: $$file,
+  url: $$url
 }, Symbol.toStringTag, { value: 'Module' }));
 
 export { $$Navbar as $, $$BaseLayout as a, blogMetaAnalysis as b };

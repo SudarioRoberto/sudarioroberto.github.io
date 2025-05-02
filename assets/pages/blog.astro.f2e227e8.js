@@ -1,6 +1,6 @@
 /* empty css                                       */import { a as createComponent, r as renderTemplate, f as renderComponent, m as maybeRenderHead, b as addAttribute } from '../astro.1a419e99.js';
 import 'html-escaper';
-import { $ as $$Navbar, a as $$BaseLayout } from './blog-meta-analysis.astro.eeddada5.js';
+import { $ as $$Navbar, a as $$BaseLayout } from './blog-meta-analysis.astro.a36630e0.js';
 
 const $$Blog = createComponent(($$result, $$props, $$slots) => {
   const blogPosts = [
