@@ -4,7 +4,7 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [tailwind()],
   site: 'https://sudarioroberto.github.io',
-  base: '',
+  base: '', // Empty base for username.github.io repositories
   output: 'static',
   vite: {
     build: {
