@@ -2,14 +2,15 @@
   "name": "micropig-website",
   "type": "module",
   "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "deploy": "npx gh-pages -d dist"
-  },
+"scripts": {
+  "dev": "astro dev",
+  "start": "astro dev",
+  "build": "astro build",
+  "preview": "astro preview",
+  "preview:github": "astro preview --host",
+  "astro": "astro",
+  "deploy": "npm run build && npx gh-pages -d dist"
+},
   "dependencies": {
     "@astrojs/tailwind": "^5.0.0",
     "astro": "^3.0.12",

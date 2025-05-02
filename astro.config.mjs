@@ -4,6 +4,6 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [tailwind()],
   site: 'https://sudarioroberto.github.io',
-  base: '/', // root – same as local test
+  base: '', // Empty string for username.github.io sites
   output: 'static'
 });
