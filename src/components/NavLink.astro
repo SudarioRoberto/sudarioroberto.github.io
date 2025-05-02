@@ -1,0 +1,21 @@
+---
+export interface Props {
+  href: string;
+  text: string;
+  className?: string;
+}
+
+const { href, text, className = "" } = Astro.props;
+
+// Determine if the link is external
+const isExternal = href.startsWith('http');
+---
+
+<a 
+  href={href} 
+  class={`nav-link text-umn-maroon font-medium hover:text-umn-light-maroon relative py-2 ${className}`}
+  target={isExternal ? "_blank" : undefined}
+  rel={isExternal ? "noopener noreferrer" : undefined}
+>
+  {text}
+</a>

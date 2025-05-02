@@ -1,0 +1,55 @@
+---
+const navLinks = [
+  { href: "#team", text: "Team" },
+  { href: "#research", text: "Research" },
+  { href: "#impact", text: "Impact" },
+  { href: "#approach", text: "Our Approach" },
+  { href: "#resources", text: "Resources" },
+  { href: "/blog", text: "Blog" },
+];
+---
+
+<!-- Mobile Menu - will slide in from right -->
+<div id="mobile-menu" class="fixed inset-0 bg-black bg-opacity-50 z-50 transform translate-x-full transition-transform duration-300 ease-in-out hidden">
+  <div class="absolute right-0 top-0 h-full w-4/5 max-w-sm bg-white shadow-xl flex flex-col">
+    <!-- Menu Header with Close Button -->
+    <div class="flex justify-between items-center p-6 border-b border-umn-gold/30 bg-umn-gold/20">
+      <a href="/#hero" class="flex items-center space-x-3">
+        <img src="/images/logo.png" alt="MicroPig Logo" class="h-10 w-auto">
+        <div class="flex flex-col">
+          <span class="text-xl font-bold text-umn-maroon">MicroPig</span>
+          <span class="text-xs text-umn-maroon/70 tracking-wide">Swine Microbiome Research</span>
+        </div>
+      </a>
+      <button id="close-menu-button" class="text-umn-maroon hover:text-umn-light-maroon focus:outline-none p-2 rounded-full hover:bg-umn-gold/30">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Menu Links -->
+    <div class="flex-1 overflow-y-auto p-6">
+      <nav class="flex flex-col space-y-4">
+        {navLinks.map(link => (
+          <a 
+            href={link.href} 
+            class="text-lg font-medium py-3 px-2 border-b border-gray-100 flex justify-between items-center hover:bg-umn-gold/10 hover:text-umn-maroon transition-colors rounded-lg"
+          >
+            {link.text}
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-umn-maroon/60" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        ))}
+      </nav>
+    </div>
+    
+    <!-- Action Button -->
+    <div class="p-6 border-t">
+      <a href="#contact" class="block w-full px-5 py-3 text-center rounded-full bg-umn-maroon text-white font-medium hover:bg-umn-light-maroon hover:shadow-lg transition-all duration-300">
+        Contact Us
+      </a>
+    </div>
+  </div>
+</div>

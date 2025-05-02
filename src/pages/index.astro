@@ -1,0 +1,34 @@
+---
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ValueProposition from '../components/ValueProposition.astro';
+import Research from '../components/Research.astro';
+import Impact from '../components/Impact.astro';
+import Approach from '../components/Approach.astro';
+import Stats from '../components/Stats.astro';
+import Team from '../components/Team.astro';
+import Resources from '../components/Resources.astro';
+import Contact from '../components/ContactSection.astro';
+import Newsletter from '../components/Newsletter.astro';
+import Navbar from '../components/Navbar.astro';  // <<== ADD this
+import Footer from '../components/Footer.astro';
+
+---
+
+<BaseLayout 
+  title="MicroPig Innovations" 
+  description="Transforming swine health through microbiome science and collaborative research at the University of Minnesota.">
+  <Navbar />   <!-- Add this -->
+  <Hero />
+  <ValueProposition />
+  <Research />
+  <Impact />
+  <Approach />
+  <Stats />
+  <Team />
+  <Resources />
+  <Newsletter />
+  <Contact />
+  <Footer/>
+</BaseLayout>

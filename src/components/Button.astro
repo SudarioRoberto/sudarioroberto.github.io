@@ -1,0 +1,52 @@
+---
+export interface Props {
+  href: string;
+  text: string;
+  variant?: 'primary' | 'secondary' | 'accent';
+  size?: 'sm' | 'md' | 'lg';
+  className?: string;
+  icon?: string;
+}
+
+const { 
+  href, 
+  text, 
+  variant = 'primary', 
+  size = 'md',
+  className = '',
+  icon = '' 
+} = Astro.props;
+
+// Base classes
+let baseClasses = 'inline-flex items-center justify-center rounded-full transition-all duration-300 font-medium';
+
+// Size classes
+const sizeClasses = {
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-6 py-3 text-base',
+  lg: 'px-8 py-3 text-lg',
+};
+
+// Variant classes
+const variantClasses = {
+  primary: 'bg-umn-maroon text-white hover:bg-umn-light-maroon hover:shadow-lg hover:-translate-y-1',
+  secondary: 'bg-transparent border-2 border-umn-gold text-umn-gold hover:bg-umn-gold hover:text-umn-maroon hover:shadow-lg hover:-translate-y-1',
+  accent: 'bg-umn-gold text-umn-maroon hover:bg-umn-light-gold hover:shadow-lg hover:-translate-y-1',
+};
+
+// Combine all classes
+const buttonClasses = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;
+
+// Determine if the link is external
+const isExternal = href.startsWith('http');
+---
+
+<a 
+  href={href} 
+  class={buttonClasses}
+  target={isExternal ? "_blank" : undefined}
+  rel={isExternal ? "noopener noreferrer" : undefined}
+>
+  {icon && <i class={`${icon} mr-2`}></i>}
+  {text}
+</a>

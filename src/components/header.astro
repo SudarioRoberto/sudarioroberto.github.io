@@ -1,0 +1,138 @@
+---
+import NavLink from './NavLink.astro';
+
+const navLinks = [
+  { href: "#team", text: "Team" },
+  { href: "#research", text: "Research" },
+  { href: "#impact", text: "Impact" },
+  { href: "#approach", text: "Our Approach" },
+  { href: "#resources", text: "Resources" },
+  { href: "#contact", text: "Contact" },
+  { href: "/blog", text: "Blog" },
+];
+---
+
+<nav id="navbar" class="fixed w-full px-6 md:px-12 py-4 bg-white/70 backdrop-blur-sm z-50 transition-all duration-300">
+  <div class="max-w-6xl mx-auto flex justify-between items-center">
+    
+    <!-- Left side: Logo -->
+    <a href="/#hero" class="flex items-center space-x-3 z-10">
+      <img src="/images/logo.png" alt="MicroPig Logo" class="h-12 md:h-14 w-auto object-contain" />
+      <div class="flex flex-col leading-tight">
+        <span class="text-xl font-bold text-umn-maroon">MicroPig</span>
+        <span class="text-xs text-umn-maroon/80 tracking-wide">Swine Microbiome Research</span>
+      </div>
+    </a>
+    
+    <!-- Center/Right: Navigation -->
+    <div class="hidden md:flex space-x-8">
+      {navLinks.map(link => (
+        <NavLink href={link.href} text={link.text} />
+      ))}
+    </div>
+
+    <!-- Mobile menu button -->
+    <button id="mobile-menu-button" class="block md:hidden p-2 rounded-md text-umn-maroon hover:text-umn-light-maroon hover:bg-umn-gold/80 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<script>
+  // Handle navbar appearance on scroll
+  document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.getElementById('navbar');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMenuButton = document.getElementById('close-menu-button');
+    
+    // Check if elements exist before adding event listeners
+    if (navbar) {
+      // Set initial navbar state
+      navbar.classList.add('scrolled-nav');
+      
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 10) {
+          navbar.classList.add('bg-umn-gold/95');
+          navbar.classList.add('shadow-lg');
+        } else {
+          navbar.classList.remove('bg-umn-gold/95');
+          navbar.classList.remove('shadow-lg');
+        }
+      });
+    }
+    
+    // Mobile menu functionality
+    if (mobileMenuButton && mobileMenu && closeMenuButton) {
+      function openMobileMenu() {
+        mobileMenu.classList.remove('translate-x-full');
+        mobileMenu.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      }
+      
+      function closeMobileMenu() {
+        mobileMenu.classList.add('translate-x-full');
+        setTimeout(() => {
+          mobileMenu.classList.add('hidden');
+        }, 300);
+        document.body.classList.remove('overflow-hidden');
+      }
+      
+      // Event listeners
+      mobileMenuButton.addEventListener('click', openMobileMenu);
+      closeMenuButton.addEventListener('click', closeMobileMenu);
+      
+      // Close menu when clicking links
+      const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+      mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          // Only prevent default if it's an anchor link
+          if (this.getAttribute('href').startsWith('#')) {
+            e.preventDefault();
+          }
+          
+          closeMobileMenu();
+          
+          // Handle smooth scrolling to section for anchor links
+          const targetId = this.getAttribute('href');
+          if (targetId.startsWith('#')) {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              setTimeout(() => {
+                window.scrollTo({
+                  top: targetElement.offsetTop - 80,
+                  behavior: 'smooth'
+                });
+              }, 300); // Small delay to match menu transition
+            }
+          }
+        });
+      });
+    }
+  });
+</script>
+
+<style>
+  .scrolled-nav {
+    background-color: rgba(255, 204, 51, 0.95);
+    backdrop-filter: blur(5px);
+  }
+  
+  /* Custom underline effect for nav links */
+  :global(.nav-link::after) {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #7A0019;
+    transition: width 0.3s ease;
+  }
+
+  :global(.nav-link:hover::after) {
+    width: 100%;
+  }
+</style>

@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom UMN styles */
+:root {
+  --primary: #7A0019;       /* UMN Maroon */
+  --primary-light: #900021; /* Light Maroon */
+  --secondary: #FFCC33;     /* UMN Gold */
+  --secondary-light: #FFDE7A; /* Light Gold */
+}

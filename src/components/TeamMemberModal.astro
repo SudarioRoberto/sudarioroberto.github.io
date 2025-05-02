@@ -1,0 +1,42 @@
+---
+export interface Props {
+  id: string;
+  name: string;
+  role: string;
+  image: string;
+  bio: string;
+}
+
+const { id, name, role, image, bio } = Astro.props;
+const modalId = `${id}Modal`;
+---
+
+<div id={modalId} class="team-modal fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
+  <div class="bg-white rounded-lg w-full max-w-5xl mx-auto p-8 relative">
+    <button 
+      class="close-modal-btn absolute top-4 right-4 text-gray-600 text-xl hover:text-gray-900 focus:outline-none" 
+      data-modal-id={modalId}
+    >
+      &times;
+    </button>
+    
+    <div class="flex flex-col md:flex-row gap-6">
+      <img src={image} alt={name} class="w-40 h-40 rounded-lg object-cover">
+      <div>
+        <h3 class="text-2xl font-bold text-gray-900">{name}</h3>
+        <p class="text-umn-maroon font-medium">{role}</p>
+        <div class="mt-4 text-gray-700 space-y-2">
+          {bio.split('\n\n').map(paragraph => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .team-modal {
+    transition: all 0.3s ease;
+  }
+</style>

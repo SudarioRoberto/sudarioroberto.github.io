@@ -1,0 +1,113 @@
+---
+const currentYear = new Date().getFullYear();
+
+const quickLinks = [
+  { href: "#research", text: "Research" },
+  { href: "#impact", text: "Impact" },
+  { href: "#approach", text: "Our Approach" },
+  { href: "/blog", text: "Blog" }, 
+  { href: "#contact", text: "Contact" },
+];
+
+const resourceLinks = [
+  { href: "https://scholar.google.com/citations?hl=en&user=0j08MsQAAAAJ&view_op=list_works&sortby=pubdate", text: "Research Publications" },
+  { href: "https://www.youtube.com/watch?v=S-vZzJM9usA", text: "Educational Videos" },
+  { href: "https://www.youtube.com/watch?v=S-vZzJM9usA", text: "Webinar Recordings" },
+  { href: "https://github.com/SudarioRoberto", text: "Implementation Tools" },
+];
+
+const professionalLinks = [
+  { href: "/coming-soon", text: "Producers" },
+  { href: "/coming-soon", text: "Veterinarians" },
+  { href: "/coming-soon", text: "Nutritionists" },
+  { href: "/coming-soon", text: "Industry Partners" },
+  { href: "/coming-soon", text: "Research Collaborators" },
+];
+---
+
+<footer class="py-12 px-6 md:px-12 bg-gray-900 text-gray-400 border-t border-gray-800">
+  <div class="container mx-auto max-w-6xl">
+    <div class="grid md:grid-cols-4 gap-8 mb-12">
+      
+      <!-- Logo and Description -->
+      <div>
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br to-umn-light-maroon flex items-center justify-center">
+            <img src="/images/logo2.png" alt="MicroPig Logo" class="h-48 w-40 object-contain" />
+          </div>
+          <div class="hidden md:flex flex-col">
+            <span class="text-xl font-bold text-white">MicroPig</span>
+            <span class="text-xs text-gray-400 tracking-wide">Swine Microbiome Research</span>
+          </div>
+          <div class="md:hidden">
+            <span class="text-2xl font-bold text-white">MicroPig</span>
+          </div>
+        </div>
+        <p class="mb-4 text-sm">
+          Transforming swine health through microbiome science and collaborative research.
+        </p>
+        <p class="text-xs text-gray-500">
+          Our research connects gut microbiome science with practical feeding strategies for healthier, more sustainable pork production.
+        </p>
+      </div>
+      
+      <div>
+        <h5 class="font-bold text-white text-lg mb-4">Quick Links</h5>
+        <ul class="space-y-3">
+          {quickLinks.map(link => (
+            <li>
+              <a href={link.href} class="hover:text-white transition-colors footer-link">
+                {link.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <div>
+        <h5 class="font-bold text-white text-lg mb-4">Resources</h5>
+        <ul class="space-y-3">
+          {resourceLinks.map(link => (
+            <li>
+              <a href={link.href} class="hover:text-white transition-colors footer-link">
+                {link.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <div>
+        <h5 class="font-bold text-white text-lg mb-4">For Professionals</h5>
+        <ul class="space-y-3">
+          {professionalLinks.map(link => (
+            <li>
+              <a href={link.href} class="hover:text-white transition-colors footer-link">
+                {link.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+      <p>&copy; {currentYear} MicroPig Innovations. All rights reserved.</p>
+      <div class="flex gap-6 mt-4 md:mt-0">
+        <a href="/coming-soon" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="/coming-soon" class="hover:text-white transition-colors">Terms of Service</a>
+        <a href="/coming-soon" class="hover:text-white transition-colors">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-link {
+    transition: color 0.2s ease;
+  }
+  
+  .footer-link:hover {
+    color: white;
+  }
+</style>

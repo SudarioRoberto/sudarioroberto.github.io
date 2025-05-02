@@ -1,0 +1,100 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+  type: string;
+  link: string;
+  linkText: string;
+  duration?: string;
+  delay?: number;
+  videoId?: string;
+  date?: string;
+}
+
+const { title, description, image, type, link, linkText, duration, delay = 0, videoId, date } = Astro.props;
+
+// Format date if provided
+const formattedDate = date ? new Date(date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric'
+}) : '';
+---
+
+<div 
+  class="resource-card bg-white rounded-lg shadow-lg overflow-hidden h-full transform transition duration-300 hover:shadow-xl hover:-translate-y-1"
+  data-type={type}
+  data-video-id={videoId}
+  data-aos="fade-up"
+  data-aos-delay={delay * 1000}
+>
+  <div class="relative">
+    <!-- Make entire image clickable for videos -->
+    {type === 'video' ? (
+      <div class="cursor-pointer relative">
+        <img 
+          src={image} 
+          alt={title}
+          class="w-full h-48 object-cover"
+          loading="lazy"
+        />
+        <!-- Play button overlay for videos -->
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="w-16 h-16 bg-red-600 bg-opacity-80 rounded-full flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    ) : (
+      <img 
+        src={image} 
+        alt={title}
+        class="w-full h-48 object-cover"
+        loading="lazy"
+      />
+    )}
+    <div class="absolute top-4 right-4">
+      <span class={`text-xs font-bold px-3 py-1 rounded-full uppercase ${type === 'video' ? 'bg-red-500 text-white' : 'bg-blue-500 text-white'}`}>
+        {type}
+      </span>
+    </div>
+  </div>
+  
+  <div class="p-6 flex flex-col flex-grow">
+    <!-- Date badge -->
+    {formattedDate && (
+      <div class="text-sm text-gray-500 mb-2">
+        {formattedDate}
+      </div>
+    )}
+    
+    <h3 class="text-xl font-bold mb-3">{title}</h3>
+    <p class="text-gray-600 mb-4 flex-grow">{description}</p>
+    
+    <div class="mt-auto flex items-center">
+      {duration && (
+        <span class="text-sm text-gray-500 mr-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          {duration}
+        </span>
+      )}
+      
+      {/* Use regular links for both video and blog, but with different styling */}
+      <a 
+        href={link} 
+        class={`${type === 'video' ? 'text-red-600 hover:text-red-800' : 'text-blue-600 hover:text-blue-800'} font-medium inline-flex items-center`}
+      >
+        {linkText}
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>

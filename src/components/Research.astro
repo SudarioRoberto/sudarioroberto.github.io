@@ -1,0 +1,79 @@
+---
+import Button from './Button.astro';
+
+const researchAreas = [
+  {
+    title: "Core Microbiome Analysis",
+    image: "https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    description: "Our meta-analysis defines the core sow microbiome, providing a foundation for targeted nutritional interventions.",
+    tags: ["Microbiome", "Genomics", "Taxonomy"],
+    link: "/coming-soon"
+  },
+  {
+    title: "Data Integration Modeling",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    description: "Our integrated models combine microbiome, metabolomics, and digestibility data to understand the mechanism by which feed additives improve nutrient digestibility in high-fiber diets.",
+    tags: ["Data Science", "Metabolomics"],
+    link: "/coming-soon"
+  },
+  {
+    title: "Postbiotic Supplementation",
+    image: "/images/sow.png",
+    description: "Our research shows that feeding sows with postbiotic reduced body weight loss in sows.",
+    tags: ["Nutrition", "Feed Additives", "Digestibility"],
+    link: "https://academic.oup.com/jas/article/102/Supplement_2/175/7664807"
+  }
+];
+---
+
+<section id="research" class="py-20 px-6 md:px-12 bg-white">
+  <div class="container mx-auto max-w-6xl">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold mb-4 section-heading">Our Research Focus</h2>
+      <p class="text-gray-600 max-w-3xl mx-auto">
+        Our research connects microbiome science with practical feeding strategies—helping producers better utilize fiber byproducts and improve pig performance without dependency on antibiotics.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {researchAreas.map((area, index) => (
+        <div class="card bg-white shadow-md overflow-hidden slide-up" style={`transition-delay: ${index * 0.2}s`}>
+          <div class="h-48 bg-cover bg-center" style={`background-image: url('${area.image}')`}>
+            <div class="h-full w-full bg-gradient-to-t from-black/60 to-transparent flex items-end">
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-white">{area.title}</h3>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 mb-4">
+              {area.description}
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              {area.tags.map(tag => (
+                <span class="text-xs bg-umn-gold/20 text-umn-maroon rounded-full px-3 py-1">{tag}</span>
+              ))}
+            </div>
+            <a href={area.link} class="inline-flex items-center text-umn-maroon font-medium hover:text-umn-light-maroon transition-colors">
+              Learn more 
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Research CTA -->
+    <div class="mt-16 text-center">
+      <Button
+        href="https://scholar.google.com/citations?hl=en&user=0j08MsQAAAAJ&view_op=list_works&sortby=pubdate"
+        text="View All Research Publications"
+        variant="primary"
+        className="shadow-md hover:shadow-lg"
+        icon="fas fa-arrow-right"
+      />
+    </div>
+  </div>
+</section>

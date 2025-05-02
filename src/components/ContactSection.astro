@@ -1,0 +1,178 @@
+---
+// src/components/ContactSection.astro
+import Icon from './Icon.astro';
+
+// Props for customization
+export interface Props {
+  email?: string;
+  phone?: string;
+  location?: string;
+}
+
+const { 
+  email = "ssilvaju@umn.edu", 
+  phone = "(612) 666-3177", 
+  location = "Department of Animal Science, University of Minnesota" 
+} = Astro.props;
+---
+
+<section id="contact" class="py-24 px-6 md:px-12 text-white bg-umn-maroon">
+  <div class="container mx-auto max-w-6xl">
+    <div class="text-center mb-14">
+      <h2 class="text-4xl font-bold mb-4">Contact</h2>
+      <p class="text-white/90 max-w-3xl mx-auto">
+        Join our collaborative network of producers, veterinarians, and industry professionals to advance swine microbiome research and implementation.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-8 items-start">
+      <!-- Left Column -->
+      <div class="space-y-8">
+        <!-- Get in Touch Card -->
+        <div class="bg-white/5 rounded-xl p-8 backdrop-blur-sm border border-white/10 shadow-lg">
+          <h3 class="text-2xl font-bold mb-4">Get in Touch</h3>
+          <p class="text-white/90 mb-6">
+            Whether you're a pork producer, veterinarian, nutritionist, or industry partner, we're eager to collaborate on research, implementation, and knowledge sharing.
+          </p>
+          
+          <div class="space-y-5">
+            <!-- Email -->
+            <div class="flex items-center">
+              <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mr-4">
+                <Icon name="fas fa-envelope" color="text-white" />
+              </div>
+              <div>
+                <div class="text-sm text-white/70 font-medium">Email</div>
+                <a href={`mailto:${email}`} class="text-white hover:text-white/80 transition-colors">{email}</a>
+              </div>
+            </div>
+            
+            <!-- Phone -->
+            <div class="flex items-center">
+              <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mr-4">
+                <Icon name="fas fa-phone" color="text-white" />
+              </div>
+              <div>
+                <div class="text-sm text-white/70 font-medium">Phone</div>
+                <a href={`tel:${phone.replace(/[^0-9]/g, '')}`} class="text-white hover:text-white/80 transition-colors">{phone}</a>
+              </div>
+            </div>
+            
+            <!-- Location -->
+            <div class="flex items-center">
+              <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mr-4">
+                <Icon name="fas fa-map-marker-alt" color="text-white" />
+              </div>
+              <div>
+                <div class="text-sm text-white/70 font-medium">Location</div>
+                <address class="text-white not-italic">{location}</address>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Partnership Opportunities -->
+        <div class="bg-white/5 rounded-xl p-8 backdrop-blur-sm border border-white/10 shadow-lg">
+          <h3 class="text-xl font-bold mb-4">Partnership Opportunities</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <div class="w-6 h-6 rounded-full bg-umn-gold flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                <Icon name="fas fa-check" size="text-xs" color="text-umn-maroon" />
+              </div>
+              <span>On-farm research collaborations</span>
+            </li>
+            <li class="flex items-start">
+              <div class="w-6 h-6 rounded-full bg-umn-gold flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                <Icon name="fas fa-check" size="text-xs" color="text-umn-maroon" />
+              </div>
+              <span>Feed formulation consulting</span>
+            </li>
+            <li class="flex items-start">
+              <div class="w-6 h-6 rounded-full bg-umn-gold flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                <Icon name="fas fa-check" size="text-xs" color="text-umn-maroon" />
+              </div>
+              <span>Educational workshops for your team</span>
+            </li>
+            <li class="flex items-start">
+              <div class="w-6 h-6 rounded-full bg-umn-gold flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                <Icon name="fas fa-check" size="text-xs" color="text-umn-maroon" />
+              </div>
+              <span>Product development partnerships</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="flex justify-center md:justify-start space-x-4">
+          <a href="#" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all duration-300">
+            <Icon name="fab fa-facebook-f" color="text-white" />
+          </a>
+          <a href="#" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all duration-300">
+            <Icon name="fab fa-twitter" color="text-white" />
+          </a>
+          <a href="https://www.linkedin.com/in/sudarioroberto/" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all duration-300">
+            <Icon name="fab fa-linkedin-in" color="text-white" />
+          </a>
+          <a href="#" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all duration-300">
+            <Icon name="fab fa-youtube" color="text-white" />
+          </a>
+        </div>
+      </div>
+      
+      <!-- Right Column: Contact Form -->
+      <div class="bg-white/5 rounded-xl p-8 backdrop-blur-sm border border-white/10 shadow-lg">
+        <h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
+        <form class="space-y-6" method="POST" action="send.php">
+          <!-- Name and Email -->
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-white mb-2">Name</label>
+              <input name="name" type="text" class="w-full p-3 rounded-lg bg-white/90 border-0 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-umn-gold" placeholder="Your name">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-white mb-2">Email</label>
+              <input name="email" type="email" class="w-full p-3 rounded-lg bg-white/90 border-0 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-umn-gold" placeholder="Your email">
+            </div>
+          </div>
+        
+          <!-- Organization -->
+          <div>
+            <label class="block text-sm font-medium text-white mb-2">Organization</label>
+            <input name="organization" type="text" class="w-full p-3 rounded-lg bg-white/90 border-0 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-umn-gold" placeholder="Your organization">
+          </div>
+        
+          <!-- Organization Type -->
+          <div>
+            <label class="block text-sm font-medium text-white mb-2">Type of Organization</label>
+            <select name="organization_type" class="w-full p-3 rounded-lg bg-white/90 border-0 text-gray-800 focus:outline-none focus:ring-2 focus:ring-umn-gold">
+              <option value="" disabled selected>Select your organization type</option>
+              <option value="producer">Swine Producer</option>
+              <option value="veterinary">Veterinary Practice</option>
+              <option value="feed">Feed Manufacturer</option>
+              <option value="academic">Academic/Research</option>
+              <option value="industry">Industry Association</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        
+          <!-- Message -->
+          <div>
+            <label class="block text-sm font-medium text-white mb-2">Message</label>
+            <textarea name="message" rows="4" class="w-full p-3 rounded-lg bg-white/90 border-0 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-umn-gold" placeholder="How can we help you?"></textarea>
+          </div>
+        
+          <!-- Newsletter Checkbox -->
+          <div class="flex items-center">
+            <input name="newsletter" type="checkbox" id="newsletter" class="rounded bg-white/90 border-0 text-umn-gold p-2 mr-3 focus:ring-umn-gold">
+            <label for="newsletter" class="text-white text-sm">Subscribe to our newsletter for research updates</label>
+          </div>
+        
+          <!-- Submit Button -->
+          <button type="submit" class="w-full py-3 px-6 rounded-lg bg-umn-gold text-umn-maroon font-bold hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl">
+            Send Message
+          </button>
+        </form>        
+      </div>
+    </div>
+  </div>
+</section>

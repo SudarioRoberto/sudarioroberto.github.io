@@ -1,0 +1,292 @@
+---
+// VideoFilters.astro
+// Define the topics/categories for filtering
+const topics = [
+  { id: 'all', name: 'All Topics' },
+  { id: 'microbiome', name: 'Microbiome' },
+  { id: 'nutrition', name: 'Nutrition' },
+  { id: 'gut-health', name: 'Gut Health' },
+  { id: 'antibiotic-reduction', name: 'Antibiotic Reduction' },
+  { id: 'farm-management', name: 'Farm Management' }
+];
+
+// Define video levels for filtering
+const levels = [
+  { id: 'all', name: 'All Levels' },
+  { id: 'beginner', name: 'Beginner' },
+  { id: 'intermediate', name: 'Intermediate' },
+  { id: 'advanced', name: 'Advanced' }
+];
+---
+
+<div class="video-filters mb-10">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+    <h2 class="text-2xl font-bold text-umn-maroon mb-4 md:mb-0">Browse Videos</h2>
+    
+    <!-- Search bar -->
+    <div class="w-full md:w-auto">
+      <div class="relative">
+        <input 
+          type="text" 
+          id="videoSearchInput"
+          placeholder="Search videos..." 
+          class="w-full md:w-64 px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-umn-maroon focus:border-transparent"
+        />
+        <button 
+          id="videoSearchBtn"
+          class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Filter options -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+    <!-- Topics filter -->
+    <div>
+      <label for="topicFilter" class="block text-sm font-medium text-gray-700 mb-1">Topic</label>
+      <select 
+        id="topicFilter" 
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-umn-maroon focus:border-transparent"
+      >
+        {topics.map(topic => (
+          <option value={topic.id}>{topic.name}</option>
+        ))}
+      </select>
+    </div>
+    
+    <!-- Level filter -->
+    <div>
+      <label for="levelFilter" class="block text-sm font-medium text-gray-700 mb-1">Level</label>
+      <select 
+        id="levelFilter" 
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-umn-maroon focus:border-transparent"
+      >
+        {levels.map(level => (
+          <option value={level.id}>{level.name}</option>
+        ))}
+      </select>
+    </div>
+  </div>
+  
+  <!-- Sort and view options -->
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+    <!-- Sort options -->
+    <div class="mb-4 md:mb-0">
+      <label for="sortOptions" class="block text-sm font-medium text-gray-700 mb-1">Sort by</label>
+      <select 
+        id="sortOptions" 
+        class="w-full md:w-48 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-umn-maroon focus:border-transparent"
+      >
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="az">A-Z</option>
+        <option value="za">Z-A</option>
+        <option value="popular">Most Popular</option>
+      </select>
+    </div>
+    
+    <!-- View options -->
+    <div class="flex space-x-2">
+      <button 
+        id="gridViewBtn" 
+        class="bg-umn-maroon text-white px-3 py-2 rounded-lg hover:bg-umn-light-maroon transition-colors"
+        aria-label="Grid view"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+        </svg>
+      </button>
+      <button 
+        id="listViewBtn" 
+        class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 transition-colors"
+        aria-label="List view"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Filter tags (appear when filters are active) -->
+  <div id="activeFilters" class="mt-4 flex flex-wrap items-center hidden">
+    <span class="text-sm text-gray-700 mr-2">Active filters:</span>
+    <!-- Example of active filter tag (these would be added dynamically with JS) -->
+    <!-- 
+    <span class="bg-gray-100 text-gray-700 text-sm px-3 py-1 rounded-full flex items-center mr-2 mb-2">
+      Microbiome
+      <button class="ml-1 text-gray-500 hover:text-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </button>
+    </span>
+    -->
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Elements
+    const gridViewBtn = document.getElementById('gridViewBtn');
+    const listViewBtn = document.getElementById('listViewBtn');
+    const videoContainer = document.querySelector('.video-grid'); // Add this class to your video grid container
+    const topicFilter = document.getElementById('topicFilter');
+    const levelFilter = document.getElementById('levelFilter');
+    const sortOptions = document.getElementById('sortOptions');
+    const searchInput = document.getElementById('videoSearchInput');
+    const searchBtn = document.getElementById('videoSearchBtn');
+    const activeFiltersContainer = document.getElementById('activeFilters');
+    
+    // View toggle
+    if (gridViewBtn && listViewBtn && videoContainer) {
+      gridViewBtn.addEventListener('click', function() {
+        videoContainer.classList.remove('list-view');
+        videoContainer.classList.add('grid-view');
+        gridViewBtn.classList.replace('bg-gray-200', 'bg-umn-maroon');
+        gridViewBtn.classList.replace('text-gray-700', 'text-white');
+        listViewBtn.classList.replace('bg-umn-maroon', 'bg-gray-200');
+        listViewBtn.classList.replace('text-white', 'text-gray-700');
+      });
+      
+      listViewBtn.addEventListener('click', function() {
+        videoContainer.classList.remove('grid-view');
+        videoContainer.classList.add('list-view');
+        listViewBtn.classList.replace('bg-gray-200', 'bg-umn-maroon');
+        listViewBtn.classList.replace('text-gray-700', 'text-white');
+        gridViewBtn.classList.replace('bg-umn-maroon', 'bg-gray-200');
+        gridViewBtn.classList.replace('text-white', 'text-gray-700');
+      });
+    }
+    
+    // Function to update active filters display
+    function updateActiveFilters() {
+      if (!activeFiltersContainer) return;
+      
+      // Clear current filters
+      while (activeFiltersContainer.children.length > 1) {
+        activeFiltersContainer.removeChild(activeFiltersContainer.lastChild);
+      }
+      
+      let hasActiveFilters = false;
+      
+      // Add topic filter if not "all"
+      if (topicFilter && topicFilter.value !== 'all') {
+        hasActiveFilters = true;
+        const topicText = topicFilter.options[topicFilter.selectedIndex].text;
+        addFilterTag(topicText, () => {
+          topicFilter.value = 'all';
+          applyFilters();
+        });
+      }
+      
+      // Add level filter if not "all"
+      if (levelFilter && levelFilter.value !== 'all') {
+        hasActiveFilters = true;
+        const levelText = levelFilter.options[levelFilter.selectedIndex].text;
+        addFilterTag(levelText, () => {
+          levelFilter.value = 'all';
+          applyFilters();
+        });
+      }
+      
+      // Add search term if present
+      if (searchInput && searchInput.value.trim()) {
+        hasActiveFilters = true;
+        addFilterTag(`Search: ${searchInput.value.trim()}`, () => {
+          searchInput.value = '';
+          applyFilters();
+        });
+      }
+      
+      // Show/hide the container
+      if (hasActiveFilters) {
+        activeFiltersContainer.classList.remove('hidden');
+      } else {
+        activeFiltersContainer.classList.add('hidden');
+      }
+    }
+    
+    // Helper to add a filter tag
+    function addFilterTag(text, removeCallback) {
+      const tag = document.createElement('span');
+      tag.className = 'bg-gray-100 text-gray-700 text-sm px-3 py-1 rounded-full flex items-center mr-2 mb-2';
+      
+      const tagText = document.createTextNode(text);
+      tag.appendChild(tagText);
+      
+      const removeBtn = document.createElement('button');
+      removeBtn.className = 'ml-1 text-gray-500 hover:text-gray-700';
+      removeBtn.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      `;
+      removeBtn.addEventListener('click', removeCallback);
+      
+      tag.appendChild(removeBtn);
+      activeFiltersContainer.appendChild(tag);
+    }
+    
+    // Main filter application function
+    function applyFilters() {
+      // In a real implementation, this would filter the videos based on selected criteria
+      // For now, we'll just update the active filters display
+      updateActiveFilters();
+      
+      // Example of how you might filter videos in a real implementation:
+      /*
+      const videos = Array.from(document.querySelectorAll('.video-item'));
+      videos.forEach(video => {
+        const videoTopic = video.dataset.topic;
+        const videoLevel = video.dataset.level;
+        const videoTitle = video.dataset.title.toLowerCase();
+        const searchTerm = searchInput.value.toLowerCase();
+        
+        const topicMatch = topicFilter.value === 'all' || videoTopic === topicFilter.value;
+        const levelMatch = levelFilter.value === 'all' || videoLevel === levelFilter.value;
+        const searchMatch = !searchTerm || videoTitle.includes(searchTerm);
+        
+        if (topicMatch && levelMatch && searchMatch) {
+          video.classList.remove('hidden');
+        } else {
+          video.classList.add('hidden');
+        }
+      });
+      */
+    }
+    
+    // Add event listeners
+    if (topicFilter) {
+      topicFilter.addEventListener('change', applyFilters);
+    }
+    
+    if (levelFilter) {
+      levelFilter.addEventListener('change', applyFilters);
+    }
+    
+    if (sortOptions) {
+      sortOptions.addEventListener('change', applyFilters);
+    }
+    
+    if (searchBtn) {
+      searchBtn.addEventListener('click', applyFilters);
+    }
+    
+    if (searchInput) {
+      searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          applyFilters();
+        }
+      });
+    }
+    
+    // Initialize
+    applyFilters();
+  });
+</script>

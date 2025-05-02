@@ -1,0 +1,13 @@
+---
+// src/components/Icon.astro
+export interface Props {
+  name: string;
+  size?: string;
+  color?: string;
+  extraClasses?: string;
+}
+
+const { name, size = "text-xl", color = "text-umn-maroon", extraClasses = "" } = Astro.props;
+---
+
+<i class={`${name} ${size} ${color} ${extraClasses}`}></i>

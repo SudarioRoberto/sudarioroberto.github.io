@@ -1,0 +1,177 @@
+---
+import TeamMemberModal from './TeamMemberModal.astro';
+
+const teamMembers = [
+  {
+    id: "sudario",
+    name: "Sudario Roberto Silva Junior",
+    role: "PhD Student",
+    image: "/images/founder.jpg",
+    bio: `I'm a swine scientist from the Federal University of Lavras, doing my PhD at the University of Minnesota. I work with swine nutrition, microbiome, and data integration.
+
+I started in pig barns managing farrowing, piglet care, and feed. That's where I first heard about the microbiome, but no one could explain how it really worked.
+
+Now I link microbial activity to feed efficiency, growth, and resilience using modeling, bioinformatics, and field data.`
+  },
+  {
+    id: "pedro",
+    name: "Pedro Urriola",
+    role: "Assistant Professor",
+    image: "/images/pedro.jpg",
+    bio: `Dr. Pedro Urriola works on sustainability of pork production by studying the intersection of animal health and the environment at a systems level. We apply nutritional evaluation of agro-industrial co-products using novel techniques. In addition to feed evaluation projects, Pedro is involved in projects on the management and control of infectious diseases transmission such as African Swine Fever in his appointment and with collaborations with the College of Veterinary Medicine.`
+  },
+  {
+    id: "andres",
+    name: "Andres Gomez",
+    role: "Associate Professor",
+    image: "/images/andres.png",
+    bio: `Dr. Andres Gomez received a PhD in Animal Science and Microbial Ecology from the University of Illinois in Urbana-Champaign and a master's degree in biotechnology and microbial ecology from the National University of Colombia. He completed postdoctoral work at the University of Minnesota and was a staff scientist at the J. Craig Venter Institute in La Jolla, California.`
+  }
+];
+---
+
+<section id="team" class="py-20 px-6 md:px-12 bg-umn-off-white">
+  <div class="container mx-auto max-w-6xl">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold mb-4 section-heading">Research Team</h2>
+      <p class="text-gray-600 max-w-3xl mx-auto text-lg">
+        The idea for MicroPig Innovations was born in real-world production systems, where microbiome was often mentioned but rarely understood.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {teamMembers.map((member) => (
+        <div class="text-center team-member-card">
+          <img 
+            src={member.image} 
+            alt={member.name} 
+            class="rounded-xl w-full shadow-lg mb-4 hover:shadow-xl transition-all"
+          >
+          <h4 class="text-lg font-semibold text-gray-900">{member.name}</h4>
+          <p class="text-sm text-gray-600">{member.role}</p>
+          <button 
+            class="text-sm text-umn-maroon font-medium mt-2 view-bio-btn" 
+            data-member-id={member.id}
+          >
+            View Bio
+          </button>
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  {/* Modals */}
+  {teamMembers.map((member) => (
+    <TeamMemberModal 
+      id={member.id}
+      name={member.name}
+      role={member.role}
+      image={member.image}
+      bio={member.bio}
+    />
+  ))}
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get all "View Bio" buttons
+    const viewBioButtons = document.querySelectorAll('.view-bio-btn');
+    
+    // Add click event listeners to each button
+    viewBioButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const memberId = this.getAttribute('data-member-id');
+        openModal(memberId);
+      });
+    });
+    
+    // Function to open modal
+    function openModal(id) {
+      const modal = document.getElementById(`${id}Modal`);
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+    
+    // Add click event listeners to close buttons
+    const closeButtons = document.querySelectorAll('.close-modal-btn');
+    closeButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const modalId = this.getAttribute('data-modal-id');
+        closeModal(modalId);
+      });
+    });
+    
+    // Function to close modal
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+    
+    // Close modal when clicking outside
+    const modals = document.querySelectorAll('.team-modal');
+    modals.forEach(modal => {
+      modal.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.add('hidden');
+          this.classList.remove('flex');
+        }
+      });
+    });
+    
+    // Close modal with ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        modals.forEach(modal => {
+          if (!modal.classList.contains('hidden')) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+          }
+        });
+      }
+    });
+  });
+</script>
+
+<style>
+  .team-member-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .team-member-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .team-member-card img {
+    transition: all 0.3s ease;
+  }
+  
+  .team-member-card:hover img {
+    transform: scale(1.02);
+  }
+  
+  .view-bio-btn {
+    position: relative;
+    transition: all 0.2s ease;
+  }
+  
+  .view-bio-btn::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+  }
+  
+  .view-bio-btn:hover::after {
+    width: 100%;
+  }
+</style>

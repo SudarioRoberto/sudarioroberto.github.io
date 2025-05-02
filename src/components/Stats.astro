@@ -1,0 +1,51 @@
+---
+const stats = [
+  {
+    value: "15+",
+    label: "Research Publications"
+  },
+  {
+    value: "5+",
+    label: "Farm Partnerships"
+  },
+  {
+    value: "8%",
+    label: "Feed Efficiency Improvement"
+  },
+  {
+    value: "20%",
+    label: "Reduced Antibiotic Use"
+  }
+];
+---
+
+<section class="py-16 px-6 md:px-12 bg-umn-maroon text-white">
+  <div class="container mx-auto max-w-6xl">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl font-bold mb-4">Our Research Impact</h2>
+      <p class="text-umn-gold max-w-2xl mx-auto">
+        Translating microbiome science into real-world outcomes for swine producers
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {stats.map((stat) => (
+        <div class="stats-card bg-white/10 backdrop-blur p-6 rounded-xl text-center border border-white/20">
+          <div class="text-5xl font-bold text-umn-gold mb-2">{stat.value}</div>
+          <p class="text-white font-medium">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats-card {
+    transition: all 0.3s ease;
+  }
+  
+  .stats-card:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+</style>
