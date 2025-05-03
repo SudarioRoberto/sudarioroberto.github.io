@@ -15,12 +15,12 @@ export { z } from 'astro/zod';
 const contentDir = '/src/content/';
 
 const contentEntryGlob = {
-  "/src/content/videos/digestibility.md": () => import("./videos/digestibility.mjs"),
-  "/src/content/videos/microbiome.md": () => import("./videos/microbiome.mjs"),
-  "/src/content/videos/waste.md": () => import("./videos/waste.mjs"),
-  "/src/content/videos/microbiome-basics.md": () => import("./videos/microbiome-basics.mjs"),
   "/src/content/blog/meta-analysis.md": () => import("./blog/meta-analysis.mjs"),
   "/src/content/blog/prebiotic.md": () => import("./blog/prebiotic.mjs"),
+  "/src/content/videos/waste.md": () => import("./videos/waste.mjs"),
+  "/src/content/videos/microbiome.md": () => import("./videos/microbiome.mjs"),
+  "/src/content/videos/digestibility.md": () => import("./videos/digestibility.mjs"),
+  "/src/content/videos/microbiome-basics.md": () => import("./videos/microbiome-basics.mjs"),
 };
 const contentCollectionToEntryMap = createCollectionToGlobResultMap({
 	globResult: contentEntryGlob,
@@ -39,7 +39,7 @@ const collectionToEntryMap = createCollectionToGlobResultMap({
 });
 
 let lookupMap = {};
-lookupMap = {"videos":{"type":"content","entries":{"digestibility":"/src/content/videos/digestibility.md","microbiome":"/src/content/videos/microbiome.md","waste":"/src/content/videos/waste.md","microbiome-basics":"/src/content/videos/microbiome-basics.md"}},"blog":{"type":"content","entries":{"meta-analysis":"/src/content/blog/meta-analysis.md","prebiotic":"/src/content/blog/prebiotic.md"}}};
+lookupMap = {"blog":{"type":"content","entries":{"meta-analysis":"/src/content/blog/meta-analysis.md","prebiotic":"/src/content/blog/prebiotic.md"}},"videos":{"type":"content","entries":{"waste":"/src/content/videos/waste.md","microbiome":"/src/content/videos/microbiome.md","digestibility":"/src/content/videos/digestibility.md","microbiome-basics":"/src/content/videos/microbiome-basics.md"}}};
 
 function createGlobLookup(glob) {
 	return async (collection, lookupId) => {
@@ -51,12 +51,12 @@ function createGlobLookup(glob) {
 }
 
 const renderEntryGlob = {
-  "/src/content/videos/digestibility.md": () => import("./videos/digestibility.entry.mjs"),
-  "/src/content/videos/microbiome.md": () => import("./videos/microbiome.entry.mjs"),
-  "/src/content/videos/waste.md": () => import("./videos/waste.entry.mjs"),
-  "/src/content/videos/microbiome-basics.md": () => import("./videos/microbiome-basics.entry.mjs"),
   "/src/content/blog/meta-analysis.md": () => import("./blog/meta-analysis.entry.mjs"),
   "/src/content/blog/prebiotic.md": () => import("./blog/prebiotic.entry.mjs"),
+  "/src/content/videos/waste.md": () => import("./videos/waste.entry.mjs"),
+  "/src/content/videos/microbiome.md": () => import("./videos/microbiome.entry.mjs"),
+  "/src/content/videos/digestibility.md": () => import("./videos/digestibility.entry.mjs"),
+  "/src/content/videos/microbiome-basics.md": () => import("./videos/microbiome-basics.entry.mjs"),
 };
 const collectionToRenderEntryMap = createCollectionToGlobResultMap({
 	globResult: renderEntryGlob,
