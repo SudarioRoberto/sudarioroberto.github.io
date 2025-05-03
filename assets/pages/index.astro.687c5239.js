@@ -1,11 +1,11 @@
-/* empty css                                       */import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute, f as renderComponent } from '../astro.1a419e99.js';
-import 'html-escaper';
+/* empty css                                       */import { createAstro, createComponent, renderTemplate, maybeRenderHead, addAttribute, renderComponent } from '../astro.405de378.js';
 import 'clsx';
-import { $ as $$Navbar, a as $$BaseLayout } from './blog-meta-analysis.astro.6775b07a.js';
-/* empty css                          */
-const $$Astro$4 = createAstro("https://sudarioroberto.github.io");
+import { $$Navbar, $$BaseLayout } from './_...slug_.astro.68660be8.js';
+/* empty css                          */import { getCollection } from '../../content/entry.mjs';
+
+const $$Astro$5 = createAstro("https://sudarioroberto.github.io");
 const $$Button = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$4, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$5, $$props, $$slots);
   Astro2.self = $$Button;
   const {
     href,
@@ -84,9 +84,9 @@ Learn more
 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path> </svg> </a> </div> </div>`)} </div> <!-- Research CTA --> <div class="mt-16 text-center"> ${renderComponent($$result, "Button", $$Button, { "href": "https://scholar.google.com/citations?hl=en&user=0j08MsQAAAAJ&view_op=list_works&sortby=pubdate", "text": "View All Research Publications", "variant": "primary", "className": "shadow-md hover:shadow-lg", "icon": "fas fa-arrow-right" })} </div> </div> </section>`;
 }, "C:/Users/sudar/micropig-website/src/components/Research.astro", void 0);
 
-const $$Astro$3 = createAstro("https://sudarioroberto.github.io");
+const $$Astro$4 = createAstro("https://sudarioroberto.github.io");
 const $$Icon = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$4, $$props, $$slots);
   Astro2.self = $$Icon;
   const { name, size = "text-xl", color = "text-umn-maroon", extraClasses = "" } = Astro2.props;
   return renderTemplate`${maybeRenderHead()}<i${addAttribute(`${name} ${size} ${color} ${extraClasses}`, "class")}></i>`;
@@ -248,9 +248,9 @@ Translating microbiome science into real-world outcomes for swine producers
 </p> </div> <div class="grid grid-cols-2 md:grid-cols-4 gap-6" data-astro-cid-bhxv2qxz> ${stats.map((stat) => renderTemplate`<div class="stats-card bg-white/10 backdrop-blur p-6 rounded-xl text-center border border-white/20" data-astro-cid-bhxv2qxz> <div class="text-5xl font-bold text-umn-gold mb-2" data-astro-cid-bhxv2qxz>${stat.value}</div> <p class="text-white font-medium" data-astro-cid-bhxv2qxz>${stat.label}</p> </div>`)} </div> </div> </section> `;
 }, "C:/Users/sudar/micropig-website/src/components/Stats.astro", void 0);
 
-const $$Astro$2 = createAstro("https://sudarioroberto.github.io");
+const $$Astro$3 = createAstro("https://sudarioroberto.github.io");
 const $$TeamMemberModal = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
   Astro2.self = $$TeamMemberModal;
   const { id, name, role, image, bio } = Astro2.props;
   const modalId = `${id}Modal`;
@@ -294,60 +294,145 @@ View Bio
 </button> </div>`)} </div> </div>  ${teamMembers.map((member) => renderTemplate`${renderComponent($$result, "TeamMemberModal", $$TeamMemberModal, { "id": member.id, "name": member.name, "role": member.role, "image": member.image, "bio": member.bio, "data-astro-cid-yu4wt3u2": true })}`)} </section>  `;
 }, "C:/Users/sudar/micropig-website/src/components/Team.astro", void 0);
 
-const $$Astro$1 = createAstro("https://sudarioroberto.github.io");
+const $$Astro$2 = createAstro("https://sudarioroberto.github.io");
 const $$ResourceCard = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
   Astro2.self = $$ResourceCard;
-  const { title, description, image, type, link, linkText, duration, delay = 0, videoId, date } = Astro2.props;
+  const {
+    title,
+    description,
+    image,
+    type,
+    link,
+    linkText,
+    duration,
+    delay = 0,
+    videoId,
+    date,
+    presenter
+    // Include presenter
+  } = Astro2.props;
   const formattedDate = date ? new Date(date).toLocaleDateString("en-US", {
     year: "numeric",
-    month: "short",
+    month: "long",
     day: "numeric"
   }) : "";
-  return renderTemplate`${maybeRenderHead()}<div class="resource-card bg-white rounded-lg shadow-lg overflow-hidden h-full transform transition duration-300 hover:shadow-xl hover:-translate-y-1"${addAttribute(type, "data-type")}${addAttribute(videoId, "data-video-id")} data-aos="fade-up"${addAttribute(delay * 1e3, "data-aos-delay")}> <div class="relative"> <!-- Make entire image clickable for videos --> ${type === "video" ? renderTemplate`<div class="cursor-pointer relative"> <img${addAttribute(image, "src")}${addAttribute(title, "alt")} class="w-full h-48 object-cover" loading="lazy"> <!-- Play button overlay for videos --> <div class="absolute inset-0 flex items-center justify-center"> <div class="w-16 h-16 bg-red-600 bg-opacity-80 rounded-full flex items-center justify-center"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path> </svg> </div> </div> </div>` : renderTemplate`<img${addAttribute(image, "src")}${addAttribute(title, "alt")} class="w-full h-48 object-cover" loading="lazy">`} <div class="absolute top-4 right-4"> <span${addAttribute(`text-xs font-bold px-3 py-1 rounded-full uppercase ${type === "video" ? "bg-red-500 text-white" : "bg-blue-500 text-white"}`, "class")}> ${type} </span> </div> </div> <div class="p-6 flex flex-col flex-grow"> <!-- Date badge --> ${formattedDate && renderTemplate`<div class="text-sm text-gray-500 mb-2"> ${formattedDate} </div>`} <h3 class="text-xl font-bold mb-3">${title}</h3> <p class="text-gray-600 mb-4 flex-grow">${description}</p> <div class="mt-auto flex items-center"> ${duration && renderTemplate`<span class="text-sm text-gray-500 mr-4"> <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path> </svg> ${duration} </span>`}  <a${addAttribute(link, "href")}${addAttribute(`${type === "video" ? "text-red-600 hover:text-red-800" : "text-blue-600 hover:text-blue-800"} font-medium inline-flex items-center`, "class")}> ${linkText} <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path> </svg> </a> </div> </div> </div>`;
+  return renderTemplate`${maybeRenderHead()}<article class="resource-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full"${addAttribute(type, "data-type")}${addAttribute(videoId, "data-video-id")}${addAttribute(delay * 1e3, "data-aos-delay")}> <div class="relative video-thumbnail-container"${addAttribute(videoId, "data-video-id")}> <!-- Image with play button for videos --> <img${addAttribute(image, "src")}${addAttribute(title, "alt")} class="w-full h-48 object-cover" onerror="this.onerror=null; this.src='/images/video-placeholder.jpg';"> <!-- Play button overlay for videos --> ${type === "video" && renderTemplate`<div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center"> <div class="w-16 h-16 rounded-full bg-umn-maroon bg-opacity-90 flex items-center justify-center cursor-pointer play-button"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path> </svg> </div> </div>`} </div> <div class="p-6"> <!-- Date and duration --> <div class="flex justify-between items-center text-sm text-gray-500 mb-3"> ${formattedDate && renderTemplate`<time>${formattedDate}</time>`} ${duration && renderTemplate`<span class="flex items-center"> <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path> </svg> ${duration} </span>`} </div> <!-- Title --> <h2 class="text-xl font-bold mb-3 text-umn-maroon"> <a${addAttribute(link, "href")} class="hover:text-umn-light-maroon transition-colors"> ${title} </a> </h2> <!-- Description --> <p class="text-gray-600 mb-3"> ${description} </p> <!-- Presenter info (for videos) --> ${type === "video" && presenter && renderTemplate`<div class="text-sm text-gray-600 mb-3"> <span>Presenter: ${presenter}</span> </div>`} <!-- Link and additional info --> <div class="flex justify-between items-center mt-auto"> <span class="text-sm text-gray-600"> ${type.charAt(0).toUpperCase() + type.slice(1)} </span> <a${addAttribute(link, "href")} class="inline-flex items-center text-umn-maroon font-medium hover:text-umn-light-maroon transition-colors"> ${linkText} ${type === "video" ? renderTemplate`<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path> </svg>` : renderTemplate`<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path> </svg>`} </a> </div> </div> </article>`;
 }, "C:/Users/sudar/micropig-website/src/components/ResourceCard.astro", void 0);
 
-const $$Resources = createComponent(($$result, $$props, $$slots) => {
-  const resources = [
-    {
-      title: "Prebiotics, Probiotics, and Postbiotics for Pigs' Gut Health",
-      description: "Dietary means of influencing the gut microbiome...",
-      image: "/images/postbiotic.png",
-      type: "blog",
-      // This is a blog post
-      date: "2025-04-15",
-      link: "https://www.realporktrust.org/post/prebiotics-probiotics-and-postbiotics-for-pigs-gut-health",
-      linkText: "Read article"
-    },
-    {
-      title: "The Power of Meta-Analysis in Swine Gut Microbiome Research",
-      description: "Understanding how combined research findings...",
-      image: "/images/metadata.png",
-      type: "blog",
-      // This is a blog post
-      date: "2025-03-20",
-      link: "/blog-meta-analysis",
-      linkText: "Read article"
-    },
-    {
-      title: "Microbiome Basics for Producers",
-      description: "Learn the fundamentals of swine gut microbiome and its practical implications for farm management and performance.",
-      image: "/images/microbiome.png",
-      type: "video",
-      date: "2025-03-15",
-      duration: "30 min",
-      link: "https://www.youtube.com/watch?v=S-vZzJM9usA",
-      linkText: "Watch video",
-      videoId: "S-vZzJM9usA"
-      // ✅ This must be here
-    }
-  ];
-  const sortedResources = [...resources].sort((a, b) => new Date(b.date) - new Date(a.date));
-  return renderTemplate`${maybeRenderHead()}<section id="resources" class="py-20 px-6 md:px-12 bg-gray-50"> <div class="container mx-auto max-w-6xl pt-20 pt-20"> <div class="text-center mb-16"> <h2 class="text-4xl font-bold mb-4 section-heading">Educational Resources</h2> <p class="text-gray-600 max-w-3xl mx-auto text-lg">
-Access practical guides, research findings, and tools to implement microbiome-focused nutrition strategies.
-</p> </div> <!-- Carousel container --> <div class="relative"> <!-- Previous/Next buttons for larger screens --> <button id="prevBtn" class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-5 z-10 bg-white rounded-full p-2 shadow-md hidden md:block focus:outline-none hover:bg-gray-100"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path> </svg> </button> <button id="nextBtn" class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-5 z-10 bg-white rounded-full p-2 shadow-md hidden md:block focus:outline-none hover:bg-gray-100"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path> </svg> </button> <!-- Carousel track --> <div id="carouselTrack" class="flex transition-transform duration-300 ease-out overflow-x-scroll md:overflow-x-hidden snap-x snap-mandatory scroll-smooth"> ${sortedResources.map((resource, index) => renderTemplate`<div class="flex-none w-full md:w-1/3 px-4 snap-start"> ${renderComponent($$result, "ResourceCard", $$ResourceCard, { "title": resource.title, "description": resource.description, "image": resource.image, "type": resource.type, "duration": resource.duration, "link": resource.link, "linkText": resource.linkText, "delay": index * 0.2, "videoId": resource.videoId, "date": resource.date })} </div>`)} </div> <!-- Dots for mobile --> <div class="flex justify-center mt-6 space-x-2 md:hidden"> ${sortedResources.map((_, index) => renderTemplate`<button class="carousel-dot w-3 h-3 rounded-full bg-gray-300 focus:outline-none"${addAttribute(index, "data-index")}></button>`)} </div> </div> </div> </section> <!-- Video Modal (same as before) --> <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center"> <div class="bg-white rounded-lg w-full max-w-4xl mx-4 sm:mx-auto p-1 relative"> <!-- Close button --> <button id="closeVideoModal" class="absolute -top-10 right-0 text-white text-xl hover:text-gray-300 focus:outline-none"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> </svg> </button> <!-- Video container with 16:9 aspect ratio --> <div class="relative" style="padding-bottom: 56.25%;"> <iframe id="videoFrame" class="absolute top-0 left-0 w-full h-full rounded-lg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+const $$Astro$1 = createAstro("https://sudarioroberto.github.io");
+const $$VideoCard = createComponent(($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
+  Astro2.self = $$VideoCard;
+  const {
+    videoId,
+    title,
+    description,
+    date,
+    duration,
+    presenter,
+    externalUrl,
+    thumbnailUrl
+  } = Astro2.props;
+  const imageUrl = thumbnailUrl || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  return renderTemplate`${maybeRenderHead()}<article class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"> <div class="relative video-thumbnail-container"${addAttribute(videoId, "data-video-id")}> <img${addAttribute(imageUrl, "src")}${addAttribute(title, "alt")} class="w-full h-48 object-cover" onerror="this.onerror=null; this.src='/images/video-placeholder.jpg';"> <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center"> <div class="w-16 h-16 rounded-full bg-umn-maroon bg-opacity-90 flex items-center justify-center cursor-pointer play-button"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path> </svg> </div> </div> </div> <div class="p-6"> <div class="flex justify-between items-center text-sm text-gray-500 mb-3"> <time>${date}</time> <span class="flex items-center"> <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path> </svg> ${duration} </span> </div> <h2 class="text-xl font-bold mb-3 text-umn-maroon"> <a${addAttribute(externalUrl || `#`, "href")} class="hover:text-umn-light-maroon transition-colors"> ${title} </a> </h2> <p class="text-gray-600 mb-3"> ${description} </p> <div class="flex justify-between items-center"> <span class="text-sm text-gray-600">
+Presenter: ${presenter} </span> <button class="inline-flex items-center text-umn-maroon font-medium hover:text-umn-light-maroon transition-colors watch-video-btn"${addAttribute(videoId, "data-video-id")}>
+Watch video
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path> </svg> </button> </div> </div> </article>`;
+}, "C:/Users/sudar/micropig-website/src/components/VideoCard.astro", void 0);
+
+const videoContent = [
+  {
+    videoId: "S-vZzJM9usA",
+    title: "Microbiome Basics for Producers",
+    description: "Learn the fundamentals of swine gut microbiome and its practical implications for farm management and performance.",
+    date: "March 15, 2025",
+    duration: "30 min",
+    presenter: "Dr. Andres Gomez",
+    externalUrl: "https://www.youtube.com/watch?v=S-vZzJM9usA"
+  },
+  {
+    videoId: "ybb6ENMEUCw",
+    title: "Utilization of Food Waste Ingredients for Feed | International Rendering Symposium",
+    description: "Discover innovative approaches to utilizing food waste as feed ingredients.",
+    date: "February 4, 2025",
+    duration: "40 min",
+    presenter: "Dr. Pedro Urriola",
+    externalUrl: "https://www.youtube.com/watch?v=ybb6ENMEUCw"
+  }
+];
+const $$Index$2 = createComponent(($$result, $$props, $$slots) => {
+  const videosWithThumbnails = videoContent.map((video) => ({
+    ...video,
+    // Default high quality thumbnail URL
+    thumbnailUrl: `https://img.youtube.com/vi/${video.videoId}/maxresdefault.jpg`,
+    // Fallback image for development (when using example IDs)
+    fallbackImage: `/images/video-placeholder.jpg`
+  }));
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": "Videos", "description": "Educational videos and webinars from the MicroPig team" }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Navbar", $$Navbar, {})} ${maybeRenderHead()}<div class="pt-32 pb-20 px-6 md:px-12 bg-umn-off-white"> <div class="container mx-auto max-w-6xl"> <!-- Header --> <div class="text-center mb-16"> <h1 class="text-4xl md:text-5xl font-bold mb-6 text-umn-maroon">MicroPig Videos</h1> <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+Educational videos, webinars, and demonstrations for practical microbiome implementation
+</p> </div> <!-- Video Grid --> <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"> ${videosWithThumbnails.map((video) => renderTemplate`${renderComponent($$result2, "VideoCard", $$VideoCard, { "videoId": video.videoId, "title": video.title, "description": video.description, "date": video.date, "duration": video.duration, "presenter": video.presenter, "externalUrl": video.externalUrl, "thumbnailUrl": video.thumbnailUrl })}`)} </div> </div> </div> ` })} <!-- Video Modal --> <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center"> <div class="bg-white rounded-lg w-full max-w-4xl mx-4 sm:mx-auto p-1 relative"> <!-- Close button --> <button id="closeVideoModal" class="absolute -top-10 right-0 text-white text-xl hover:text-gray-300 focus:outline-none"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> </svg> </button> <!-- Video container with 16:9 aspect ratio --> <div class="relative" style="padding-bottom: 56.25%;"> <iframe id="videoFrame" class="absolute top-0 left-0 w-full h-full rounded-lg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
       </iframe> </div> </div> </div> `;
-}, "C:/Users/sudar/micropig-website/src/components/Resources.astro", void 0);
+}, "C:/Users/sudar/micropig-website/src/pages/videos/index.astro", void 0);
+
+const $$file$2 = "C:/Users/sudar/micropig-website/src/pages/videos/index.astro";
+const $$url$2 = "/videos";
+
+const index$2 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$Index$2,
+  file: $$file$2,
+  url: $$url$2,
+  videoContent
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const $$HybridResources = createComponent(async ($$result, $$props, $$slots) => {
+  const getBlogPosts = async () => {
+    try {
+      const blogPosts2 = await getCollection("blog");
+      return blogPosts2.map((post) => ({
+        title: post.data.title,
+        description: post.data.description,
+        image: post.data.featuredImage,
+        type: "blog",
+        date: post.data.publishDate,
+        link: `/blog/${post.slug}`,
+        linkText: "Read article"
+      }));
+    } catch (error) {
+      console.error("Error loading blog posts:", error);
+      return [];
+    }
+  };
+  const videoResources = videoContent.map((video) => ({
+    title: video.title,
+    description: video.description,
+    type: "video",
+    date: typeof video.date === "string" ? video.date : "2025-01-01",
+    // Ensure date is in string format
+    duration: video.duration,
+    // Set link to "#" so it doesn't navigate away - video will open in modal
+    link: "#",
+    linkText: "Watch video",
+    videoId: video.videoId,
+    presenter: video.presenter,
+    // Add presenter information
+    // Generate thumbnail from YouTube
+    image: `https://img.youtube.com/vi/${video.videoId}/maxresdefault.jpg`
+  }));
+  const blogPosts = await getBlogPosts();
+  const allResources = [...blogPosts, ...videoResources];
+  const sortedResources = allResources.sort((a, b) => {
+    const dateA = typeof a.date === "string" ? new Date(a.date) : a.date;
+    const dateB = typeof b.date === "string" ? new Date(b.date) : b.date;
+    return dateB.getTime() - dateA.getTime();
+  });
+  console.log(`Total resources: ${allResources.length}, Videos: ${videoResources.length}, Blogs: ${blogPosts.length}`);
+  return renderTemplate`${maybeRenderHead()}<section id="resources" class="py-20 px-6 md:px-12 bg-gray-50"> <div class="container mx-auto max-w-6xl"> <div class="text-center mb-16"> <h2 class="text-4xl font-bold mb-4 section-heading">Educational Resources</h2> <p class="text-gray-600 max-w-3xl mx-auto text-lg">
+Access practical guides, research findings, and tools to implement microbiome-focused nutrition strategies.
+</p> </div> <!-- Carousel container --> <div class="relative"> <!-- Previous/Next buttons for larger screens --> <button id="prevBtn" class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-5 z-10 bg-white rounded-full p-2 shadow-md hidden md:block focus:outline-none hover:bg-gray-100"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path> </svg> </button> <button id="nextBtn" class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-5 z-10 bg-white rounded-full p-2 shadow-md hidden md:block focus:outline-none hover:bg-gray-100"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path> </svg> </button> <!-- Carousel track - pre-set the width for more stability --> <div id="carouselTrack" class="flex transition-transform duration-300 ease-out overflow-x-scroll md:overflow-x-hidden snap-x snap-mandatory scroll-smooth"> ${sortedResources.map((resource, index) => renderTemplate`<div class="flex-none w-full md:w-1/3 px-4 snap-start"> ${renderComponent($$result, "ResourceCard", $$ResourceCard, { "title": resource.title, "description": resource.description, "image": resource.image, "type": resource.type, "duration": resource.duration, "link": resource.link, "linkText": resource.linkText || (resource.type === "video" ? "Watch video" : "Read article"), "delay": index * 0.2, "videoId": resource.videoId, "date": resource.date instanceof Date ? resource.date.toISOString() : resource.date, "presenter": resource.presenter })} </div>`)} </div> <!-- Dots for mobile --> <div class="flex justify-center mt-6 space-x-2 md:hidden"> ${sortedResources.map((_, index) => renderTemplate`<button class="carousel-dot w-3 h-3 rounded-full bg-gray-300 focus:outline-none"${addAttribute(index, "data-index")}></button>`)} </div> </div> </div> </section> <!-- Video Modal --> <div id="resourcesVideoModal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center"> <div class="bg-white rounded-lg w-full max-w-4xl mx-4 sm:mx-auto p-1 relative"> <!-- Close button --> <button id="closeResourcesVideoModal" class="absolute -top-10 right-0 text-white text-xl hover:text-gray-300 focus:outline-none"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> </svg> </button> <!-- Video container with 16:9 aspect ratio --> <div class="relative" style="padding-bottom: 56.25%;"> <iframe id="resourcesVideoFrame" class="absolute top-0 left-0 w-full h-full rounded-lg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+      </iframe> </div> </div> </div> `;
+}, "C:/Users/sudar/micropig-website/src/components/HybridResources.astro", void 0);
 
 const $$Astro = createAstro("https://sudarioroberto.github.io");
 const $$ContactSection = createComponent(($$result, $$props, $$slots) => {
@@ -404,11 +489,47 @@ Our research connects gut microbiome science with practical feeding strategies f
 </p> </div> <div data-astro-cid-sz7xmlte> <h5 class="font-bold text-white text-lg mb-4" data-astro-cid-sz7xmlte>Quick Links</h5> <ul class="space-y-3" data-astro-cid-sz7xmlte> ${quickLinks.map((link) => renderTemplate`<li data-astro-cid-sz7xmlte> <a${addAttribute(link.href, "href")} class="hover:text-white transition-colors footer-link" data-astro-cid-sz7xmlte> ${link.text} </a> </li>`)} </ul> </div> <div data-astro-cid-sz7xmlte> <h5 class="font-bold text-white text-lg mb-4" data-astro-cid-sz7xmlte>Resources</h5> <ul class="space-y-3" data-astro-cid-sz7xmlte> ${resourceLinks.map((link) => renderTemplate`<li data-astro-cid-sz7xmlte> <a${addAttribute(link.href, "href")} class="hover:text-white transition-colors footer-link" data-astro-cid-sz7xmlte> ${link.text} </a> </li>`)} </ul> </div> <div data-astro-cid-sz7xmlte> <h5 class="font-bold text-white text-lg mb-4" data-astro-cid-sz7xmlte>For Professionals</h5> <ul class="space-y-3" data-astro-cid-sz7xmlte> ${professionalLinks.map((link) => renderTemplate`<li data-astro-cid-sz7xmlte> <a${addAttribute(link.href, "href")} class="hover:text-white transition-colors footer-link" data-astro-cid-sz7xmlte> ${link.text} </a> </li>`)} </ul> </div> </div> <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center" data-astro-cid-sz7xmlte> <p data-astro-cid-sz7xmlte>&copy; ${currentYear} MicroPig. All rights reserved.</p> <div class="flex gap-6 mt-4 md:mt-0" data-astro-cid-sz7xmlte> <a href="/coming-soon" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Privacy Policy</a> <a href="/coming-soon" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Terms of Service</a> <a href="/coming-soon" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Accessibility</a> </div> </div> </div> </footer> `;
 }, "C:/Users/sudar/micropig-website/src/components/Footer.astro", void 0);
 
-const $$Index = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": "Swine Microbiome Research", "description": "Transforming swine health through microbiome science and collaborative research at the University of Minnesota." }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Navbar", $$Navbar, {})}  ${renderComponent($$result2, "Hero", $$Hero, {})} ${renderComponent($$result2, "ValueProposition", $$ValueProposition, {})} ${renderComponent($$result2, "Research", $$Research, {})} ${renderComponent($$result2, "Impact", $$Impact, {})} ${renderComponent($$result2, "Approach", $$Approach, {})} ${renderComponent($$result2, "Stats", $$Stats, {})} ${renderComponent($$result2, "Team", $$Team, {})} ${renderComponent($$result2, "Resources", $$Resources, {})} ${renderComponent($$result2, "Newsletter", $$Newsletter, {})} ${renderComponent($$result2, "Contact", $$ContactSection, {})} ${renderComponent($$result2, "Footer", $$Footer, {})} ` })}`;
+const $$Index$1 = createComponent(($$result, $$props, $$slots) => {
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": "Swine Microbiome Research", "description": "Transforming swine health through microbiome science and collaborative research at the University of Minnesota." }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Navbar", $$Navbar, {})}  ${renderComponent($$result2, "Hero", $$Hero, {})} ${renderComponent($$result2, "ValueProposition", $$ValueProposition, {})} ${renderComponent($$result2, "Research", $$Research, {})} ${renderComponent($$result2, "Impact", $$Impact, {})} ${renderComponent($$result2, "Approach", $$Approach, {})} ${renderComponent($$result2, "Stats", $$Stats, {})} ${renderComponent($$result2, "Team", $$Team, {})} ${renderComponent($$result2, "HybridResources", $$HybridResources, {})} ${renderComponent($$result2, "Newsletter", $$Newsletter, {})} ${renderComponent($$result2, "Contact", $$ContactSection, {})} ${renderComponent($$result2, "Footer", $$Footer, {})} ` })}`;
 }, "C:/Users/sudar/micropig-website/src/pages/index.astro", void 0);
 
-const $$file = "C:/Users/sudar/micropig-website/src/pages/index.astro";
-const $$url = "";
+const $$file$1 = "C:/Users/sudar/micropig-website/src/pages/index.astro";
+const $$url$1 = "";
 
-export { $$Index as default, $$file as file, $$url as url };
+const index$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$Index$1,
+  file: $$file$1,
+  url: $$url$1
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const $$Index = createComponent(async ($$result, $$props, $$slots) => {
+  const blogPosts = await getCollection("blog");
+  const sortedPosts = blogPosts.sort(
+    (a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
+  );
+  const formatDate = (date) => {
+    return new Date(date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
+  };
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": "Blog", "description": "Insights and research updates from the MicroPig team" }, { "default": async ($$result2) => renderTemplate` ${renderComponent($$result2, "Navbar", $$Navbar, {})} ${maybeRenderHead()}<div class="pt-32 pb-20 px-6 md:px-12 bg-umn-off-white"> <div class="container mx-auto max-w-6xl"> <!-- Header --> <div class="text-center mb-16"> <h1 class="text-4xl md:text-5xl font-bold mb-6 text-umn-maroon">MicroPig Blog</h1> <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+Latest research findings, implementation strategies, and insights from our team
+</p> </div> <!-- Blog Posts Grid --> <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"> ${sortedPosts.map((post) => renderTemplate`<article class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"> <a${addAttribute(`/blog/${post.slug}`, "href")}> <img${addAttribute(post.data.featuredImage, "src")}${addAttribute(post.data.title, "alt")} class="w-full h-48 object-cover"> </a> <div class="p-6"> <div class="flex justify-between items-center text-sm text-gray-500 mb-3"> <time>${formatDate(post.data.publishDate)}</time> <span>${post.data.author}</span> </div> <h2 class="text-xl font-bold mb-3 text-umn-maroon"> <a${addAttribute(`/blog/${post.slug}`, "href")} class="hover:text-umn-light-maroon transition-colors"> ${post.data.title} </a> </h2> <p class="text-gray-600 mb-5"> ${post.data.description} </p> <a${addAttribute(`/blog/${post.slug}`, "href")} class="inline-flex items-center text-umn-maroon font-medium hover:text-umn-light-maroon transition-colors">
+Read more
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path> </svg> </a> </div> </article>`)} </div> </div> </div> ` })}`;
+}, "C:/Users/sudar/micropig-website/src/pages/blog/index.astro", void 0);
+
+const $$file = "C:/Users/sudar/micropig-website/src/pages/blog/index.astro";
+const $$url = "/blog";
+
+const index = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$Index,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+export { index$2 as index, index$1, index as index$2 };
