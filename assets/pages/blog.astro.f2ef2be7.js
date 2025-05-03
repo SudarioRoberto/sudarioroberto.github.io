@@ -1,7 +1,7 @@
-/* empty css                                       */import { createComponent, renderTemplate, renderComponent, maybeRenderHead, addAttribute } from '../astro.405de378.js';
-import { $$Navbar, $$BaseLayout } from './_...slug_.astro.395a6889.js';
-import 'clsx';
+/* empty css                                       */import { createComponent, renderTemplate, renderComponent, maybeRenderHead, addAttribute } from '../astro.0dd1d872.js';
 import 'html-escaper';
+import { $$Navbar, $$BaseLayout } from './_...slug_.astro.6b715567.js';
+import 'clsx';
 import '../../content/entry.mjs';
 /* empty css                                       *//* empty css                                       *//* empty css                                       */
 const $$Blog = createComponent(($$result, $$props, $$slots) => {

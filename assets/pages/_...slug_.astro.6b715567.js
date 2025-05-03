@@ -1,4 +1,5 @@
-/* empty css                                       */import { createAstro, createComponent, renderTemplate, addAttribute, renderHead, renderSlot, maybeRenderHead, renderComponent } from '../astro.405de378.js';
+/* empty css                                       */import { createAstro, createComponent, renderTemplate, addAttribute, renderHead, renderSlot, maybeRenderHead, renderComponent } from '../astro.0dd1d872.js';
+import 'html-escaper';
 import 'clsx';
 import { getCollection } from '../../content/entry.mjs';
 /* empty css                                       *//* empty css                                       *//* empty css                                       */

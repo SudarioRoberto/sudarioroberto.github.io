@@ -1,7 +1,7 @@
-/* empty css                                       */import { createComponent, renderTemplate, renderComponent, maybeRenderHead } from '../astro.405de378.js';
-import 'clsx';
-import { $$BaseLayout } from './_...slug_.astro.395a6889.js';
+/* empty css                                       */import { createComponent, renderTemplate, renderComponent, maybeRenderHead } from '../astro.0dd1d872.js';
 import 'html-escaper';
+import 'clsx';
+import { $$BaseLayout } from './_...slug_.astro.6b715567.js';
 import '../../content/entry.mjs';
 /* empty css                                       *//* empty css                                       *//* empty css                                       */
 const $$ComingSoon = createComponent(($$result, $$props, $$slots) => {

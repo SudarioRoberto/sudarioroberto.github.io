@@ -1,6 +1,7 @@
-/* empty css                                       */import { createAstro, createComponent, renderTemplate, maybeRenderHead, addAttribute, renderComponent } from '../astro.405de378.js';
+/* empty css                                       */import { createAstro, createComponent, renderTemplate, maybeRenderHead, addAttribute, renderComponent } from '../astro.0dd1d872.js';
+import 'html-escaper';
 import 'clsx';
-import { $$Navbar, $$BaseLayout } from './_...slug_.astro.395a6889.js';
+import { $$Navbar, $$BaseLayout } from './_...slug_.astro.6b715567.js';
 /* empty css                          */import { getCollection } from '../../content/entry.mjs';
 
 const $$Astro$5 = createAstro("https://sudarioroberto.github.io");
@@ -303,140 +304,91 @@ const $$ResourceCard = createComponent(($$result, $$props, $$slots) => {
     description,
     image,
     type,
+    date,
     link,
     linkText,
-    duration,
     delay = 0,
     videoId,
-    date,
-    presenter
-    // Include presenter
-  } = Astro2.props;
-  const formattedDate = date ? new Date(date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric"
-  }) : "";
-  return renderTemplate`${maybeRenderHead()}<article class="resource-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full"${addAttribute(type, "data-type")}${addAttribute(videoId, "data-video-id")}${addAttribute(delay * 1e3, "data-aos-delay")}> <div class="relative video-thumbnail-container"${addAttribute(videoId, "data-video-id")}> <!-- Image with play button for videos --> <img${addAttribute(image, "src")}${addAttribute(title, "alt")} class="w-full h-48 object-cover" onerror="this.onerror=null; this.src='/images/video-placeholder.jpg';"> <!-- Play button overlay for videos --> ${type === "video" && renderTemplate`<div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center"> <div class="w-16 h-16 rounded-full bg-umn-maroon bg-opacity-90 flex items-center justify-center cursor-pointer play-button"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path> </svg> </div> </div>`} </div> <div class="p-6"> <!-- Date and duration --> <div class="flex justify-between items-center text-sm text-gray-500 mb-3"> ${formattedDate && renderTemplate`<time>${formattedDate}</time>`} ${duration && renderTemplate`<span class="flex items-center"> <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path> </svg> ${duration} </span>`} </div> <!-- Title --> <h2 class="text-xl font-bold mb-3 text-umn-maroon"> <a${addAttribute(link, "href")} class="hover:text-umn-light-maroon transition-colors"> ${title} </a> </h2> <!-- Description --> <p class="text-gray-600 mb-3"> ${description} </p> <!-- Presenter info (for videos) --> ${type === "video" && presenter && renderTemplate`<div class="text-sm text-gray-600 mb-3"> <span>Presenter: ${presenter}</span> </div>`} <!-- Link and additional info --> <div class="flex justify-between items-center mt-auto"> <span class="text-sm text-gray-600"> ${type.charAt(0).toUpperCase() + type.slice(1)} </span> <a${addAttribute(link, "href")} class="inline-flex items-center text-umn-maroon font-medium hover:text-umn-light-maroon transition-colors"> ${linkText} ${type === "video" ? renderTemplate`<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path> </svg>` : renderTemplate`<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path> </svg>`} </a> </div> </div> </article>`;
-}, "C:/Users/sudar/micropig-website/src/components/ResourceCard.astro", void 0);
-
-const $$Astro$1 = createAstro("https://sudarioroberto.github.io");
-const $$VideoCard = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
-  Astro2.self = $$VideoCard;
-  const {
-    videoId,
-    title,
-    description,
-    date,
     duration,
     presenter,
-    externalUrl,
-    thumbnailUrl
+    isExternal = false
   } = Astro2.props;
-  const imageUrl = thumbnailUrl || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-  return renderTemplate`${maybeRenderHead()}<article class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"> <div class="relative video-thumbnail-container"${addAttribute(videoId, "data-video-id")}> <img${addAttribute(imageUrl, "src")}${addAttribute(title, "alt")} class="w-full h-48 object-cover" onerror="this.onerror=null; this.src='/images/video-placeholder.jpg';"> <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center"> <div class="w-16 h-16 rounded-full bg-umn-maroon bg-opacity-90 flex items-center justify-center cursor-pointer play-button"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path> </svg> </div> </div> </div> <div class="p-6"> <div class="flex justify-between items-center text-sm text-gray-500 mb-3"> <time>${date}</time> <span class="flex items-center"> <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path> </svg> ${duration} </span> </div> <h2 class="text-xl font-bold mb-3 text-umn-maroon"> <a${addAttribute(externalUrl || `#`, "href")} class="hover:text-umn-light-maroon transition-colors"> ${title} </a> </h2> <p class="text-gray-600 mb-3"> ${description} </p> <div class="flex justify-between items-center"> <span class="text-sm text-gray-600">
-Presenter: ${presenter} </span> <button class="inline-flex items-center text-umn-maroon font-medium hover:text-umn-light-maroon transition-colors watch-video-btn"${addAttribute(videoId, "data-video-id")}>
-Watch video
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path> </svg> </button> </div> </div> </article>`;
-}, "C:/Users/sudar/micropig-website/src/components/VideoCard.astro", void 0);
-
-const videoContent = [
-  {
-    videoId: "S-vZzJM9usA",
-    title: "Microbiome Basics for Producers",
-    description: "Learn the fundamentals of swine gut microbiome and its practical implications for farm management and performance.",
-    date: "March 15, 2025",
-    duration: "30 min",
-    presenter: "Dr. Andres Gomez",
-    externalUrl: "https://www.youtube.com/watch?v=S-vZzJM9usA"
-  },
-  {
-    videoId: "ybb6ENMEUCw",
-    title: "Utilization of Food Waste Ingredients for Feed | International Rendering Symposium",
-    description: "Discover innovative approaches to utilizing food waste as feed ingredients.",
-    date: "February 4, 2025",
-    duration: "40 min",
-    presenter: "Dr. Pedro Urriola",
-    externalUrl: "https://www.youtube.com/watch?v=ybb6ENMEUCw"
-  }
-];
-const $$Index$2 = createComponent(($$result, $$props, $$slots) => {
-  const videosWithThumbnails = videoContent.map((video) => ({
-    ...video,
-    // Default high quality thumbnail URL
-    thumbnailUrl: `https://img.youtube.com/vi/${video.videoId}/maxresdefault.jpg`,
-    // Fallback image for development (when using example IDs)
-    fallbackImage: `/images/video-placeholder.jpg`
-  }));
-  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": "Videos", "description": "Educational videos and webinars from the MicroPig team" }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Navbar", $$Navbar, {})} ${maybeRenderHead()}<div class="pt-32 pb-20 px-6 md:px-12 bg-umn-off-white"> <div class="container mx-auto max-w-6xl"> <!-- Header --> <div class="text-center mb-16"> <h1 class="text-4xl md:text-5xl font-bold mb-6 text-umn-maroon">MicroPig Videos</h1> <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-Educational videos, webinars, and demonstrations for practical microbiome implementation
-</p> </div> <!-- Video Grid --> <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"> ${videosWithThumbnails.map((video) => renderTemplate`${renderComponent($$result2, "VideoCard", $$VideoCard, { "videoId": video.videoId, "title": video.title, "description": video.description, "date": video.date, "duration": video.duration, "presenter": video.presenter, "externalUrl": video.externalUrl, "thumbnailUrl": video.thumbnailUrl })}`)} </div> </div> </div> ` })} <!-- Video Modal --> <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center"> <div class="bg-white rounded-lg w-full max-w-4xl mx-4 sm:mx-auto p-1 relative"> <!-- Close button --> <button id="closeVideoModal" class="absolute -top-10 right-0 text-white text-xl hover:text-gray-300 focus:outline-none"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> </svg> </button> <!-- Video container with 16:9 aspect ratio --> <div class="relative" style="padding-bottom: 56.25%;"> <iframe id="videoFrame" class="absolute top-0 left-0 w-full h-full rounded-lg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-      </iframe> </div> </div> </div> `;
-}, "C:/Users/sudar/micropig-website/src/pages/videos/index.astro", void 0);
-
-const $$file$2 = "C:/Users/sudar/micropig-website/src/pages/videos/index.astro";
-const $$url$2 = "/videos";
-
-const index$2 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  default: $$Index$2,
-  file: $$file$2,
-  url: $$url$2,
-  videoContent
-}, Symbol.toStringTag, { value: 'Module' }));
+  const formatDate = (dateString) => {
+    try {
+      const date2 = new Date(dateString);
+      return date2.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      });
+    } catch (e) {
+      console.error("Date formatting error:", e);
+      return dateString;
+    }
+  };
+  const formattedDate = formatDate(date);
+  return renderTemplate`${maybeRenderHead()}<div class="resource-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 slide-up"${addAttribute(`transition-delay: ${delay}s`, "style")}${addAttribute(type, "data-type")}${addAttribute(videoId, "data-video-id")} data-astro-cid-fzs2epah> <div class="relative h-48" data-astro-cid-fzs2epah> <img${addAttribute(image, "src")}${addAttribute(title, "alt")} class="w-full h-full object-cover" onerror="this.src='/images/fallback-blog.jpg';" data-astro-cid-fzs2epah> <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end" data-astro-cid-fzs2epah> <div class="p-4 w-full" data-astro-cid-fzs2epah> <div class="flex justify-between items-center text-sm text-white" data-astro-cid-fzs2epah> <span${addAttribute(`px-2 py-1 rounded-full text-xs ${type === "blog" ? "bg-umn-maroon" : "bg-umn-gold text-umn-maroon"}`, "class")} data-astro-cid-fzs2epah> ${type === "blog" ? isExternal ? "External Article" : "Article" : "Video"} </span> ${type === "video" && duration && renderTemplate`<span class="flex items-center" data-astro-cid-fzs2epah> <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" data-astro-cid-fzs2epah> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" data-astro-cid-fzs2epah></path> </svg> ${duration} </span>`} </div> </div> </div> </div> <div class="p-6" data-astro-cid-fzs2epah> <div class="flex justify-between items-center text-sm text-gray-500 mb-3" data-astro-cid-fzs2epah> <time data-astro-cid-fzs2epah>${formattedDate}</time> ${presenter && renderTemplate`<span data-astro-cid-fzs2epah>${presenter}</span>`} ${isExternal && !presenter && renderTemplate`<span data-astro-cid-fzs2epah>External Source</span>`} </div> <h3 class="text-xl font-bold mb-3 text-umn-maroon line-clamp-2" data-astro-cid-fzs2epah>${title}</h3> <p class="text-gray-600 mb-5 line-clamp-3" data-astro-cid-fzs2epah> ${description} </p> <a${addAttribute(link, "href")} class="inline-flex items-center text-umn-maroon font-medium hover:text-umn-light-maroon transition-colors"${addAttribute(type, "data-type")}${addAttribute(videoId, "data-video-id")}${addAttribute(isExternal ? "_blank" : void 0, "target")}${addAttribute(isExternal ? "noopener noreferrer" : void 0, "rel")} data-astro-cid-fzs2epah> ${linkText || (type === "video" ? "Watch video" : isExternal ? "Read on original site" : "Read article")} ${type === "video" ? renderTemplate`<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-fzs2epah> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" data-astro-cid-fzs2epah></path> </svg>` : isExternal ? renderTemplate`<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-fzs2epah> <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" data-astro-cid-fzs2epah></path> <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" data-astro-cid-fzs2epah></path> </svg>` : renderTemplate`<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-fzs2epah> <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-fzs2epah></path> </svg>`} </a> </div> </div>  `;
+}, "C:/Users/sudar/micropig-website/src/components/ResourceCard.astro", void 0);
 
 const $$HybridResources = createComponent(async ($$result, $$props, $$slots) => {
-  const getBlogPosts = async () => {
+  async function getBlogPosts() {
     try {
-      const blogPosts2 = await getCollection("blog");
-      return blogPosts2.map((post) => ({
-        title: post.data.title,
-        description: post.data.description,
-        image: post.data.featuredImage,
+      const blogEntries = await getCollection("blog");
+      return blogEntries.map((entry) => ({
+        title: entry.data.title,
+        description: entry.data.description,
+        image: entry.data.featuredImage,
         type: "blog",
-        date: post.data.publishDate,
-        link: `/blog/${post.slug}`,
+        date: entry.data.publishDate,
+        link: `/blog/${entry.slug}`,
         linkText: "Read article"
       }));
     } catch (error) {
       console.error("Error loading blog posts:", error);
       return [];
     }
-  };
-  const videoResources = videoContent.map((video) => ({
-    title: video.title,
-    description: video.description,
-    type: "video",
-    date: typeof video.date === "string" ? video.date : "2025-01-01",
-    // Ensure date is in string format
-    duration: video.duration,
-    // Set link to "#" so it doesn't navigate away - video will open in modal
-    link: "#",
-    linkText: "Watch video",
-    videoId: video.videoId,
-    presenter: video.presenter,
-    // Add presenter information
-    // Generate thumbnail from YouTube
-    image: `https://img.youtube.com/vi/${video.videoId}/maxresdefault.jpg`
-  }));
+  }
+  async function getVideos() {
+    try {
+      const videoEntries = await getCollection("videos");
+      return videoEntries.map((entry) => ({
+        title: entry.data.title,
+        description: entry.data.description,
+        // Replace this line
+        // image: entry.data.thumbnail,
+        // With this line to automatically use YouTube thumbnails
+        image: `https://img.youtube.com/vi/${entry.data.videoId}/maxresdefault.jpg`,
+        type: "video",
+        date: entry.data.publishDate,
+        duration: entry.data.duration,
+        presenter: entry.data.presenter,
+        videoId: entry.data.videoId,
+        link: "#",
+        linkText: "Watch video"
+      }));
+    } catch (error) {
+      console.error("Error loading videos:", error);
+      return [];
+    }
+  }
   const blogPosts = await getBlogPosts();
-  const allResources = [...blogPosts, ...videoResources];
+  const videos = await getVideos();
+  const allResources = [...blogPosts, ...videos];
   const sortedResources = allResources.sort((a, b) => {
-    const dateA = typeof a.date === "string" ? new Date(a.date) : a.date;
-    const dateB = typeof b.date === "string" ? new Date(b.date) : b.date;
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
     return dateB.getTime() - dateA.getTime();
   });
-  console.log(`Total resources: ${allResources.length}, Videos: ${videoResources.length}, Blogs: ${blogPosts.length}`);
+  console.log(`Total resources: ${allResources.length}, Videos: ${videos.length}, Blogs: ${blogPosts.length}`);
   return renderTemplate`${maybeRenderHead()}<section id="resources" class="py-20 px-6 md:px-12 bg-gray-50"> <div class="container mx-auto max-w-6xl"> <div class="text-center mb-16"> <h2 class="text-4xl font-bold mb-4 section-heading">Educational Resources</h2> <p class="text-gray-600 max-w-3xl mx-auto text-lg">
 Access practical guides, research findings, and tools to implement microbiome-focused nutrition strategies.
-</p> </div> <!-- Carousel container --> <div class="relative"> <!-- Previous/Next buttons for larger screens --> <button id="prevBtn" class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-5 z-10 bg-white rounded-full p-2 shadow-md hidden md:block focus:outline-none hover:bg-gray-100"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path> </svg> </button> <button id="nextBtn" class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-5 z-10 bg-white rounded-full p-2 shadow-md hidden md:block focus:outline-none hover:bg-gray-100"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path> </svg> </button> <!-- Carousel track - pre-set the width for more stability --> <div id="carouselTrack" class="flex transition-transform duration-300 ease-out overflow-x-scroll md:overflow-x-hidden snap-x snap-mandatory scroll-smooth"> ${sortedResources.map((resource, index) => renderTemplate`<div class="flex-none w-full md:w-1/3 px-4 snap-start"> ${renderComponent($$result, "ResourceCard", $$ResourceCard, { "title": resource.title, "description": resource.description, "image": resource.image, "type": resource.type, "duration": resource.duration, "link": resource.link, "linkText": resource.linkText || (resource.type === "video" ? "Watch video" : "Read article"), "delay": index * 0.2, "videoId": resource.videoId, "date": resource.date instanceof Date ? resource.date.toISOString() : resource.date, "presenter": resource.presenter })} </div>`)} </div> <!-- Dots for mobile --> <div class="flex justify-center mt-6 space-x-2 md:hidden"> ${sortedResources.map((_, index) => renderTemplate`<button class="carousel-dot w-3 h-3 rounded-full bg-gray-300 focus:outline-none"${addAttribute(index, "data-index")}></button>`)} </div> </div> </div> </section> <!-- Video Modal --> <div id="resourcesVideoModal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center"> <div class="bg-white rounded-lg w-full max-w-4xl mx-4 sm:mx-auto p-1 relative"> <!-- Close button --> <button id="closeResourcesVideoModal" class="absolute -top-10 right-0 text-white text-xl hover:text-gray-300 focus:outline-none"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> </svg> </button> <!-- Video container with 16:9 aspect ratio --> <div class="relative" style="padding-bottom: 56.25%;"> <iframe id="resourcesVideoFrame" class="absolute top-0 left-0 w-full h-full rounded-lg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</p> </div> <!-- Carousel container --> <div class="relative"> <!-- Previous/Next buttons for larger screens --> <button id="prevBtn" class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-5 z-10 bg-white rounded-full p-2 shadow-md hidden md:block focus:outline-none hover:bg-gray-100"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path> </svg> </button> <button id="nextBtn" class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-5 z-10 bg-white rounded-full p-2 shadow-md hidden md:block focus:outline-none hover:bg-gray-100"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path> </svg> </button> <!-- Carousel track - pre-set the width for more stability --> <div id="carouselTrack" class="flex overflow-x-auto space-x-6 no-scrollbar"> ${sortedResources.length > 0 ? sortedResources.map((resource, index) => renderTemplate`<div class="flex-none w-full md:w-1/3 px-4 snap-start"> ${renderComponent($$result, "ResourceCard", $$ResourceCard, { "title": resource.title, "description": resource.description, "image": resource.image, "type": resource.type, "duration": resource.duration, "link": resource.link, "linkText": resource.linkText || (resource.type === "video" ? "Watch video" : "Read article"), "delay": index * 0.2, "videoId": resource.videoId, "date": resource.date, "presenter": resource.presenter })} </div>`) : renderTemplate`<div class="w-full text-center py-10"> <p class="text-gray-500">No resources available yet. Check back soon!</p> </div>`} </div> <!-- Dots for mobile --> ${sortedResources.length > 0 && renderTemplate`<div class="flex justify-center mt-6 space-x-2 md:hidden"> ${sortedResources.map((_, index) => renderTemplate`<button class="carousel-dot w-3 h-3 rounded-full bg-gray-300 focus:outline-none"${addAttribute(index, "data-index")}></button>`)} </div>`} </div> </div> </section> <!-- Video Modal --> <div id="resourcesVideoModal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center"> <div class="bg-white rounded-lg w-full max-w-4xl mx-4 sm:mx-auto p-1 relative"> <!-- Close button --> <button id="closeResourcesVideoModal" class="absolute -top-10 right-0 text-white text-xl hover:text-gray-300 focus:outline-none"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> </svg> </button> <!-- Video container with 16:9 aspect ratio --> <div class="relative" style="padding-bottom: 56.25%;"> <iframe id="resourcesVideoFrame" class="absolute top-0 left-0 w-full h-full rounded-lg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
       </iframe> </div> </div> </div> `;
 }, "C:/Users/sudar/micropig-website/src/components/HybridResources.astro", void 0);
 
-const $$Astro = createAstro("https://sudarioroberto.github.io");
+const $$Astro$1 = createAstro("https://sudarioroberto.github.io");
 const $$ContactSection = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$ContactSection;
   const {
     email = "ssilvaju@umn.edu",
@@ -489,18 +441,102 @@ Our research connects gut microbiome science with practical feeding strategies f
 </p> </div> <div data-astro-cid-sz7xmlte> <h5 class="font-bold text-white text-lg mb-4" data-astro-cid-sz7xmlte>Quick Links</h5> <ul class="space-y-3" data-astro-cid-sz7xmlte> ${quickLinks.map((link) => renderTemplate`<li data-astro-cid-sz7xmlte> <a${addAttribute(link.href, "href")} class="hover:text-white transition-colors footer-link" data-astro-cid-sz7xmlte> ${link.text} </a> </li>`)} </ul> </div> <div data-astro-cid-sz7xmlte> <h5 class="font-bold text-white text-lg mb-4" data-astro-cid-sz7xmlte>Resources</h5> <ul class="space-y-3" data-astro-cid-sz7xmlte> ${resourceLinks.map((link) => renderTemplate`<li data-astro-cid-sz7xmlte> <a${addAttribute(link.href, "href")} class="hover:text-white transition-colors footer-link" data-astro-cid-sz7xmlte> ${link.text} </a> </li>`)} </ul> </div> <div data-astro-cid-sz7xmlte> <h5 class="font-bold text-white text-lg mb-4" data-astro-cid-sz7xmlte>For Professionals</h5> <ul class="space-y-3" data-astro-cid-sz7xmlte> ${professionalLinks.map((link) => renderTemplate`<li data-astro-cid-sz7xmlte> <a${addAttribute(link.href, "href")} class="hover:text-white transition-colors footer-link" data-astro-cid-sz7xmlte> ${link.text} </a> </li>`)} </ul> </div> </div> <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center" data-astro-cid-sz7xmlte> <p data-astro-cid-sz7xmlte>&copy; ${currentYear} MicroPig. All rights reserved.</p> <div class="flex gap-6 mt-4 md:mt-0" data-astro-cid-sz7xmlte> <a href="/coming-soon" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Privacy Policy</a> <a href="/coming-soon" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Terms of Service</a> <a href="/coming-soon" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Accessibility</a> </div> </div> </div> </footer> `;
 }, "C:/Users/sudar/micropig-website/src/components/Footer.astro", void 0);
 
-const $$Index$1 = createComponent(($$result, $$props, $$slots) => {
+const $$Index$2 = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": "Swine Microbiome Research", "description": "Transforming swine health through microbiome science and collaborative research at the University of Minnesota." }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Navbar", $$Navbar, {})}  ${renderComponent($$result2, "Hero", $$Hero, {})} ${renderComponent($$result2, "ValueProposition", $$ValueProposition, {})} ${renderComponent($$result2, "Research", $$Research, {})} ${renderComponent($$result2, "Impact", $$Impact, {})} ${renderComponent($$result2, "Approach", $$Approach, {})} ${renderComponent($$result2, "Stats", $$Stats, {})} ${renderComponent($$result2, "Team", $$Team, {})} ${renderComponent($$result2, "HybridResources", $$HybridResources, {})} ${renderComponent($$result2, "Newsletter", $$Newsletter, {})} ${renderComponent($$result2, "Contact", $$ContactSection, {})} ${renderComponent($$result2, "Footer", $$Footer, {})} ` })}`;
 }, "C:/Users/sudar/micropig-website/src/pages/index.astro", void 0);
 
-const $$file$1 = "C:/Users/sudar/micropig-website/src/pages/index.astro";
-const $$url$1 = "";
+const $$file$2 = "C:/Users/sudar/micropig-website/src/pages/index.astro";
+const $$url$2 = "";
+
+const index$2 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$Index$2,
+  file: $$file$2,
+  url: $$url$2
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const $$Astro = createAstro("https://sudarioroberto.github.io");
+const $$VideoCard = createComponent(($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
+  Astro2.self = $$VideoCard;
+  const {
+    videoId,
+    title,
+    description,
+    date,
+    duration,
+    presenter,
+    externalUrl,
+    thumbnailUrl
+  } = Astro2.props;
+  const imageUrl = thumbnailUrl || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  return renderTemplate`${maybeRenderHead()}<article class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"> <div class="relative video-thumbnail-container"${addAttribute(videoId, "data-video-id")}> <img${addAttribute(imageUrl, "src")}${addAttribute(title, "alt")} class="w-full h-48 object-cover" onerror="this.onerror=null; this.src='/images/video-placeholder.jpg';"> <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center"> <div class="w-16 h-16 rounded-full bg-umn-maroon bg-opacity-90 flex items-center justify-center cursor-pointer play-button"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path> </svg> </div> </div> </div> <div class="p-6"> <div class="flex justify-between items-center text-sm text-gray-500 mb-3"> <time>${date}</time> <span class="flex items-center"> <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path> </svg> ${duration} </span> </div> <h2 class="text-xl font-bold mb-3 text-umn-maroon"> <a${addAttribute(externalUrl || `#`, "href")} class="hover:text-umn-light-maroon transition-colors"> ${title} </a> </h2> <p class="text-gray-600 mb-3"> ${description} </p> <div class="flex justify-between items-center"> <span class="text-sm text-gray-600">
+Presenter: ${presenter} </span> <button class="inline-flex items-center text-umn-maroon font-medium hover:text-umn-light-maroon transition-colors watch-video-btn"${addAttribute(videoId, "data-video-id")}>
+Watch video
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path> </svg> </button> </div> </div> </article>`;
+}, "C:/Users/sudar/micropig-website/src/components/VideoCard.astro", void 0);
+
+const videoContent = [
+  {
+    videoId: "S-vZzJM9usA",
+    title: "Microbiome Basics for Producers",
+    description: "Learn the fundamentals of swine gut microbiome and its practical implications for farm management and performance.",
+    date: "March 15, 2025",
+    duration: "30 min",
+    presenter: "Dr. Andres Gomez",
+    externalUrl: "https://www.youtube.com/watch?v=S-vZzJM9usA"
+  },
+  {
+    videoId: "ybb6ENMEUCw",
+    title: "Utilization of Food Waste Ingredients for Feed | International Rendering Symposium",
+    description: "Discover innovative approaches to utilizing food waste as feed ingredients with Dr. Pedro E. Urriola from the University of Minnesota. This session at the International Rendering Symposium 2025 explores sustainable solutions to reduce waste and enhance animal nutrition.",
+    date: "February 4, 2025",
+    duration: "40 min",
+    presenter: "Dr. Pedro Urriola",
+    externalUrl: "https://www.youtube.com/watch?v=ybb6ENMEUCw"
+  },
+  {
+    videoId: "9fCDd3xrGiI",
+    title: "Unlocking the POTENTIAL of MICROBIOMICS in SWINE nutrition",
+    description: " In this interview Dr. Andres Gomez talked to us about some of his past research as well as his current work with the swine microbiome.",
+    date: "January 23, 2023",
+    duration: "38 min",
+    presenter: "Dr. Andres Gomez",
+    externalUrl: "https://www.youtube.com/watch?v=9fCDd3xrGiI"
+  },
+  {
+    videoId: "XDXs--xAbXI",
+    title: "Ingredient Digestibility in Swine Nutrition ",
+    description: " In this interview Dr. Pedro Urriola talked to us about some of his past research as well as his current work with the ingredient digestibility in swine nutrition.",
+    date: "August 30, 2021",
+    duration: "50 min",
+    presenter: "Dr. Pedro Urriola",
+    externalUrl: "https://www.youtube.com/watch?v=XDXs--xAbXII"
+  }
+];
+const $$Index$1 = createComponent(($$result, $$props, $$slots) => {
+  const videosWithThumbnails = videoContent.map((video) => ({
+    ...video,
+    // Default high quality thumbnail URL
+    thumbnailUrl: `https://img.youtube.com/vi/${video.videoId}/maxresdefault.jpg`,
+    // Fallback image for development (when using example IDs)
+    fallbackImage: `/images/video-placeholder.jpg`
+  }));
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": "Videos", "description": "Educational videos and webinars from the MicroPig team" }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Navbar", $$Navbar, {})} ${maybeRenderHead()}<div class="pt-32 pb-20 px-6 md:px-12 bg-umn-off-white"> <div class="container mx-auto max-w-6xl"> <!-- Header --> <div class="text-center mb-16"> <h1 class="text-4xl md:text-5xl font-bold mb-6 text-umn-maroon">MicroPig Videos</h1> <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+Educational videos, webinars, and demonstrations for practical microbiome implementation
+</p> </div> <!-- Video Grid --> <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"> ${videosWithThumbnails.map((video) => renderTemplate`${renderComponent($$result2, "VideoCard", $$VideoCard, { "videoId": video.videoId, "title": video.title, "description": video.description, "date": video.date, "duration": video.duration, "presenter": video.presenter, "externalUrl": video.externalUrl, "thumbnailUrl": video.thumbnailUrl })}`)} </div> </div> </div> ` })} <!-- Video Modal --> <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center"> <div class="bg-white rounded-lg w-full max-w-4xl mx-4 sm:mx-auto p-1 relative"> <!-- Close button --> <button id="closeVideoModal" class="absolute -top-10 right-0 text-white text-xl hover:text-gray-300 focus:outline-none"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> </svg> </button> <!-- Video container with 16:9 aspect ratio --> <div class="relative" style="padding-bottom: 56.25%;"> <iframe id="videoFrame" class="absolute top-0 left-0 w-full h-full rounded-lg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+      </iframe> </div> </div> </div> `;
+}, "C:/Users/sudar/micropig-website/src/pages/videos/index.astro", void 0);
+
+const $$file$1 = "C:/Users/sudar/micropig-website/src/pages/videos/index.astro";
+const $$url$1 = "/videos";
 
 const index$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: $$Index$1,
   file: $$file$1,
-  url: $$url$1
+  url: $$url$1,
+  videoContent
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const $$Index = createComponent(async ($$result, $$props, $$slots) => {

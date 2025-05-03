@@ -1,5 +1,5 @@
-import { clsx } from 'clsx';
 import { escape } from 'html-escaper';
+import { clsx } from 'clsx';
 
 const MissingMediaQueryDirective = {
   name: "MissingMediaQueryDirective",
@@ -194,28 +194,8 @@ function createAstro(site) {
 function isPromise(value) {
   return !!value && typeof value === "object" && typeof value.then === "function";
 }
-async function* streamAsyncIterator(stream) {
-  const reader = stream.getReader();
-  try {
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done)
-        return;
-      yield value;
-    }
-  } finally {
-    reader.releaseLock();
-  }
-}
 
 const escapeHTML = escape;
-class HTMLBytes extends Uint8Array {
-}
-Object.defineProperty(HTMLBytes.prototype, Symbol.toStringTag, {
-  get() {
-    return "HTMLBytes";
-  }
-});
 class HTMLString extends String {
   get [Symbol.toStringTag]() {
     return "HTMLString";
@@ -232,47 +212,6 @@ const markHTMLString = (value) => {
 };
 function isHTMLString(value) {
   return Object.prototype.toString.call(value) === "[object HTMLString]";
-}
-function markHTMLBytes(bytes) {
-  return new HTMLBytes(bytes);
-}
-function hasGetReader(obj) {
-  return typeof obj.getReader === "function";
-}
-async function* unescapeChunksAsync(iterable) {
-  if (hasGetReader(iterable)) {
-    for await (const chunk of streamAsyncIterator(iterable)) {
-      yield unescapeHTML(chunk);
-    }
-  } else {
-    for await (const chunk of iterable) {
-      yield unescapeHTML(chunk);
-    }
-  }
-}
-function* unescapeChunks(iterable) {
-  for (const chunk of iterable) {
-    yield unescapeHTML(chunk);
-  }
-}
-function unescapeHTML(str) {
-  if (!!str && typeof str === "object") {
-    if (str instanceof Uint8Array) {
-      return markHTMLBytes(str);
-    } else if (str instanceof Response && str.body) {
-      const body = str.body;
-      return unescapeChunksAsync(body);
-    } else if (typeof str.then === "function") {
-      return Promise.resolve(str).then((value) => {
-        return unescapeHTML(value);
-      });
-    } else if (Symbol.iterator in str) {
-      return unescapeChunks(str);
-    } else if (Symbol.asyncIterator in str || hasGetReader(str)) {
-      return unescapeChunksAsync(str);
-    }
-  }
-  return markHTMLString(str);
 }
 
 const RenderInstructionSymbol = Symbol.for("astro:render");
@@ -1391,4 +1330,4 @@ function normalizeProps(props) {
   return props;
 }
 
-export { addAttribute, createAstro, createComponent, maybeRenderHead, renderComponent, renderHead, renderSlot, renderTemplate, unescapeHTML };
+export { addAttribute, createAstro, createComponent, maybeRenderHead, renderComponent, renderHead, renderSlot, renderTemplate };
