@@ -1,104 +1,168 @@
 ---
-import NavLink from './NavLink.astro';
+// src/components/Navbar.astro
 ---
 
-<nav id="navbar" class="fixed w-full z-50 transition-all duration-300 scrolled-nav shadow-md">
-  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-    <!-- Logo -->
-    <a href="/" class="flex items-center space-x-3">
-      <img src="/images/logo.png" alt="MicroPig Logo" class="h-20 w-auto">
-      <div class="flex flex-col">
-        <span class="text-xl font-bold text-[#7A0019]">MicroPig</span>
-        <span class="text-xs text-[#7A0019]/70 tracking-wide">Swine Microbiome Research</span>
+<nav id="main-nav" class="fixed w-full z-50 transition-all duration-300 bg-umn-gold/95 backdrop-blur-md shadow-md h-50">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-3">
+      <!-- Logo Section - Enlarged -->
+      <a href="/" class="flex items-center space-x-3 z-10">
+        <img src="/images/logo.png" alt="MicroPig Logo" class="h-20 object-contain transition-transform duration-300 hover:scale-105" />
+      <div class="flex flex-col leading-tight">
+        <span class="text-2xl md:text-3xl font-bold text-gray-900">MicroPig</span>
+        <span class="hidden sm:block text-sm text-gray-700 tracking-wide">Swine Microbiome Research</span>
       </div>
-    </a>
-
-    <!-- Desktop Menu -->
-    <div class="hidden md:flex space-x-8">
-      <NavLink href="/#hero" text="Home" />
-      <NavLink href="/#research" text="Research" />
-      <NavLink href="/#impact" text="Impact" />
-      <NavLink href="/#approach" text="Our Approach" />
-      <NavLink href="/#team" text="Team" />
-      <NavLink href="/#resources" text="Resources" />
-      <NavLink href="/video" text= "videos" />
-      <NavLink href="/blog" text="Blog" />
-      <NavLink href="/#contact" text="Contact" />
-    </div>
-
-    <!-- Mobile Button -->
-    <button id="menu-button" class="md:hidden focus:outline-none text-[#7A0019]">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
-  </div>
-</nav>
-
-<!-- Mobile Menu -->
-<div id="mobile-menu" class="fixed inset-0 bg-black bg-opacity-50 z-40 transform translate-x-full transition-transform duration-300 ease-in-out">
-  <div class="absolute right-0 top-0 h-full w-4/5 max-w-sm bg-white shadow-xl flex flex-col">
-    <div class="flex justify-between items-center p-6 border-b border-[#FFCC33]/30 bg-[#FFCC33]/20">
-      <a href="/" class="flex items-center space-x-3">
-        <img src="/images/logo.png" alt="MicroPig Logo" class="h-10 w-auto">
-        <div class="flex flex-col">
-          <span class="text-xl font-bold text-[#7A0019]">MicroPig</span>
-          <span class="text-xs text-[#7A0019]/70 tracking-wide">Swine Microbiome Research</span>
-        </div>
       </a>
-      <button id="close-menu-button" class="text-[#7A0019] hover:text-[#500010] focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center space-x-1">
+        <a href="/#research" class="nav-link px-3 py-2 rounded-md text-lg ">Research</a>
+        <a href="/#impact" class="nav-link px-3 py-2 rounded-md text-lg">Impact</a>
+        <a href="/#approach" class="nav-link px-3 py-2 rounded-md text-lg">Our Approach</a>
+        <a href="/#team" class="nav-link px-3 py-2 rounded-md text-lg">Team</a>
+        
+        <!-- Resources Dropdown -->
+        <div class="relative group">
+          <a href="/#resources" class="nav-link px-3 py-2 rounded-md flex items-center text-lg">
+            Resources
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:rotate-180 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <div class="absolute left-0 mt-1 w-56 bg-white rounded-md shadow-lg overflow-hidden z-20 opacity-0 invisible scale-95 group-hover:opacity-100 group-hover:visible group-hover:scale-100 transition-all duration-200 origin-top-left">
+            <a href="/videos" class="block px-4 py-3 text-md text-umn-maroon hover:bg-umn-gold/20 border-l-2 border-transparent hover:border-umn-maroon">Educational Videos</a>
+            <a href="https://scholar.google.com/citations?hl=en&user=0j08MsQAAAAJ&view_op=list_works&sortby=pubdate" class="block px-4 py-3 text-md text-umn-maroon hover:bg-umn-gold/20 border-l-2 border-transparent hover:border-umn-maroon ">Research Publications</a>
+            <a href="https://github.com/SudarioRoberto" class="block px-4 py-3 text-md text-umn-maroon hover:bg-umn-gold/20 border-l-2 border-transparent hover:border-umn-maroon">Tools</a>
+          </div>
+        </div>
+        
+        <a href="/blog" class="nav-link px-3 py-2 rounded-md text-lg">Blog</a>
+        <a href="/#contact" class="nav-link px-3 py-2 rounded-md text-lg">Contact</a>
+      </div>
+      
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-button" aria-label="Menu" class="lg:hidden flex items-center p-2 rounded-md text-umn-maroon hover:bg-umn-maroon/10 focus:outline-none" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
     </div>
-
-    <div class="flex-1 overflow-y-auto p-6">
-      <nav class="flex flex-col space-y-4">
-        <a href="/#hero" class="mobile-link">Home</a>
-        <a href="/#research" class="mobile-link">Research</a>
-        <a href="/#impact" class="mobile-link">Impact</a>
-        <a href="/#approach" class="mobile-link">Our Approach</a>
-        <a href="/#team" class="mobile-link">Team</a>
-        <a href="/#resources" class="mobile-link">Resources</a>
-        <a href="/blog" class="mobile-link">Blog</a>
-        <a href="/#contact" class="mobile-link">Contact</a>
-      </nav>
+  </div>
+  
+  <!-- Mobile Menu (hidden by default) -->
+  <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-gray-200 shadow-inner">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      <a href="/#hero" class="mobile-nav-link block px-3 py-2 rounded-md">Home</a>
+      <a href="/#research" class="mobile-nav-link block px-3 py-2 rounded-md">Research</a>
+      <a href="/#impact" class="mobile-nav-link block px-3 py-2 rounded-md">Impact</a>
+      <a href="/#approach" class="mobile-nav-link block px-3 py-2 rounded-md">Our Approach</a>
+      <a href="/#team" class="mobile-nav-link block px-3 py-2 rounded-md">Team</a>
+      
+      <!-- Mobile Resources Dropdown -->
+      <div class="mobile-dropdown">
+        <a href="/#resources" class="mobile-nav-link block px-3 py-2 rounded-md">Resources</a>
+        <div class="mobile-dropdown-toggle flex items-center justify-center w-8 h-8 absolute right-3 top-[12.75rem] rounded-full bg-umn-gold/20 text-umn-maroon hover:bg-umn-gold/40">
+          <svg xmlns="http://www.w3.org/2000/svg" class="dropdown-icon h-4 w-4 transform transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="mobile-dropdown-content hidden pl-6 py-2 space-y-1">
+          <a href="https://scholar.google.com/citations?hl=en&user=0j08MsQAAAAJ&view_op=list_works&sortby=pubdate" class="mobile-nav-link block px-3 py-2 text-sm rounded-md">Research Publications</a>
+          <a href="/video" class="mobile-nav-link block px-3 py-2 text-sm rounded-md">Educational Videos</a>
+          <a href="https://github.com/SudarioRoberto" class="mobile-nav-link block px-3 py-2 text-sm rounded-md">Tools</a>
+        </div>
+      </div>
+      
+      <a href="/blog" class="mobile-nav-link block px-3 py-2 rounded-md">Blog</a>
+      <a href="/#contact" class="mobile-nav-link block px-3 py-2 rounded-md">Contact</a>
     </div>
   </div>
-</div>
+</nav>
 
-<style>
-.scrolled-nav {
-  background-color: rgba(255, 204, 51, 0.95) !important;
-  backdrop-filter: blur(5px);
-}
-
-/* Mobile Link style */
-.mobile-link {
-  @apply text-lg font-medium py-3 px-2 border-b border-gray-100 flex justify-between items-center hover:bg-[#FFCC33]/10 hover:text-[#7A0019] transition-colors rounded-lg;
-}
-</style>
-
-<script type="text/javascript">
-  window.addEventListener('DOMContentLoaded', () => {
-    const menuButton = document.getElementById('menu-button');
+<script>
+  // Mobile menu toggle functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    const closeMenuButton = document.getElementById('close-menu-button');
-    const navbar = document.getElementById('navbar');
-
-    menuButton.addEventListener('click', () => {
-      mobileMenu.classList.remove('translate-x-full');
-    });
-
-    closeMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.add('translate-x-full');
-    });
-
+    const navbar = document.getElementById('main-nav');
+    const dropdownToggle = document.querySelector('.mobile-dropdown-toggle');
+    const dropdownContent = document.querySelector('.mobile-dropdown-content');
+    const dropdownIcon = document.querySelector('.dropdown-icon');
+    
+    // Toggle mobile menu
+    if (menuButton && mobileMenu) {
+      menuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+        menuButton.setAttribute('aria-expanded', !expanded);
+      });
+    }
+    
+    // Handle navbar appearance on scroll
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 10) {
-        navbar.classList.add('scrolled-nav');
+      if (window.scrollY > 20) {
+        navbar.classList.add('shadow-md');
+      } else {
+        navbar.classList.remove('shadow-md');
       }
+    });
+    
+    // Mobile dropdown toggle
+    if (dropdownToggle && dropdownContent && dropdownIcon) {
+      dropdownToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        dropdownContent.classList.toggle('hidden');
+        dropdownIcon.classList.toggle('rotate-180');
+      });
+    }
+    
+    // Close mobile menu when clicking links (except dropdown toggle)
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        // Don't close menu when clicking the Resources parent link or dropdown toggle
+        if (!link.closest('.mobile-dropdown-toggle') && !link.classList.contains('mobile-dropdown')) {
+          // Add a slight delay to allow the click to register before closing the menu
+          setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+            menuButton.setAttribute('aria-expanded', 'false');
+          }, 150);
+        }
+      });
     });
   });
 </script>
+
+<script src="/scripts/nav-enhancement.js" defer></script>
+
+
+<style>
+  /* Mobile navigation styles */
+  .mobile-nav-link {
+    color: var(--primary);
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .mobile-nav-link:hover, .mobile-nav-link:focus {
+    background-color: var(--secondary-light);
+    color: var(--primary-light);
+  }
+  
+  /* Active link styling for mobile */
+  .mobile-nav-link.active {
+    background-color: var(--secondary);
+    color: var(--primary);
+    font-weight: 600;
+  }
+  
+  /* Dropdown toggle button positioning */
+  .mobile-dropdown {
+    position: relative;
+  }
+  
+  /* Animation for dropdown */
+  .mobile-dropdown-content {
+    transition: all 0.3s ease;
+  }
+</style>

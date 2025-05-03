@@ -1,4 +1,4 @@
-/* MicroPig Innovations - University of Minnesota Theme */
+/* MicroPig - University of Minnesota Theme */
 
 :root {
     /* Primary UMN Color Palette */
@@ -232,4 +232,8 @@
     input, select, textarea {
       font-size: 16px !important; /* Prevents iOS zoom on focus */
     }
+  }
+
+  section {
+    scroll-margin-top: 90px;
   }

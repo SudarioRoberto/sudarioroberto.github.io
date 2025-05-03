@@ -1,100 +1,209 @@
 ---
-interface Props {
-  title: string;
-  description: string;
-  image: string;
-  type: string;
-  link: string;
-  linkText: string;
-  duration?: string;
-  delay?: number;
-  videoId?: string;
-  date?: string;
+import ResourceCard from './ResourceCard.astro';
+import { getCollection } from 'astro:content';
+
+// Function to safely get blog posts
+async function getBlogPosts() {
+  try {
+    const posts = await getCollection('blog');
+    return posts.sort((a, b) => 
+      new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
+    );
+  } catch (error) {
+    console.error("Error loading blog posts:", error);
+    return [];
+  }
 }
 
-const { title, description, image, type, link, linkText, duration, delay = 0, videoId, date } = Astro.props;
+// Function to safely get videos
+async function getVideos() {
+  try {
+    const videos = await getCollection('videos');
+    return videos.sort((a, b) => 
+      new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
+    );
+  } catch (error) {
+    console.error("Error loading videos:", error);
+    return [];
+  }
+}
 
-// Format date if provided
-const formattedDate = date ? new Date(date).toLocaleDateString('en-US', {
-  year: 'numeric',
-  month: 'short',
-  day: 'numeric'
-}) : '';
+// Get content
+const blogPosts = await getBlogPosts();
+const videos = await getVideos();
+
+// Map blog posts to resource format
+const blogResources = blogPosts.map(post => ({
+  title: post.data.title,
+  description: post.data.description,
+  image: post.data.featuredImage,
+  type: "blog",
+  date: post.data.publishDate,
+  link: `/blog/${post.slug}`,
+  linkText: "Read article"
+}));
+
+// Map videos to resource format
+const videoResources = videos.map(video => ({
+  title: video.data.title,
+  description: video.data.description,
+  image: video.data.thumbnail,
+  type: "video",
+  date: video.data.publishDate,
+  duration: video.data.duration,
+  link: `/videos/${video.slug}`,
+  linkText: "Watch video",
+  videoId: video.data.videoId
+}));
+
+// Create a combined list of resources
+const resources = [...blogResources, ...videoResources];
+
+// Sort all resources by date (newest first)
+const sortedResources = [...resources].sort((a, b) => {
+  const dateA = new Date(a.date);
+  const dateB = new Date(b.date);
+  return dateB.getTime() - dateA.getTime();
+});
+
+// Limit to 6 most recent resources for homepage
+const featuredResources = sortedResources.slice(0, 6);
+
+// Log resources count for debugging
+console.log(`Total resources: ${resources.length}, Videos: ${videoResources.length}, Blogs: ${blogResources.length}`);
 ---
 
-<div 
-  class="resource-card bg-white rounded-lg shadow-lg overflow-hidden h-full transform transition duration-300 hover:shadow-xl hover:-translate-y-1"
-  data-type={type}
-  data-video-id={videoId}
-  data-aos="fade-up"
-  data-aos-delay={delay * 1000}
->
-  <div class="relative">
-    <!-- Make entire image clickable for videos -->
-    {type === 'video' ? (
-      <div class="cursor-pointer relative">
-        <img 
-          src={image} 
-          alt={title}
-          class="w-full h-48 object-cover"
-          loading="lazy"
-        />
-        <!-- Play button overlay for videos -->
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div class="w-16 h-16 bg-red-600 bg-opacity-80 rounded-full flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-        </div>
+<section id="resources" class="py-20 px-6 md:px-12 bg-gray-50">
+  <div class="container mx-auto max-w-6xl">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold mb-4 section-heading">Educational Resources</h2>
+      <p class="text-gray-600 max-w-3xl mx-auto">
+        Access practical guides, research findings, and tools to implement microbiome-focused nutrition strategies.
+      </p>
+    </div>
+    
+    {featuredResources.length > 0 ? (
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {featuredResources.map((resource, index) => (
+          <ResourceCard 
+            title={resource.title}
+            description={resource.description}
+            image={resource.image}
+            type={resource.type}
+            duration={resource.duration}
+            link={resource.link}
+            linkText={resource.linkText}
+            delay={index * 0.2}
+            videoId={resource.videoId}
+            date={resource.date}
+          />
+        ))}
       </div>
     ) : (
-      <img 
-        src={image} 
-        alt={title}
-        class="w-full h-48 object-cover"
-        loading="lazy"
-      />
-    )}
-    <div class="absolute top-4 right-4">
-      <span class={`text-xs font-bold px-3 py-1 rounded-full uppercase ${type === 'video' ? 'bg-red-500 text-white' : 'bg-blue-500 text-white'}`}>
-        {type}
-      </span>
-    </div>
-  </div>
-  
-  <div class="p-6 flex flex-col flex-grow">
-    <!-- Date badge -->
-    {formattedDate && (
-      <div class="text-sm text-gray-500 mb-2">
-        {formattedDate}
+      <div class="text-center py-16">
+        <p class="text-gray-500">Resources are coming soon. Check back later!</p>
       </div>
     )}
     
-    <h3 class="text-xl font-bold mb-3">{title}</h3>
-    <p class="text-gray-600 mb-4 flex-grow">{description}</p>
-    
-    <div class="mt-auto flex items-center">
-      {duration && (
-        <span class="text-sm text-gray-500 mr-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+    {/* View all resources button */}
+    {resources.length > 6 && (
+      <div class="mt-12 text-center">
+        <a 
+          href={videoResources.length > 0 ? "/videos" : "/blog"} 
+          class="inline-flex items-center px-6 py-3 bg-umn-maroon text-white rounded-lg hover:bg-umn-light-maroon transition-all duration-300"
+        >
+          View All Resources
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
           </svg>
-          {duration}
-        </span>
-      )}
-      
-      {/* Use regular links for both video and blog, but with different styling */}
-      <a 
-        href={link} 
-        class={`${type === 'video' ? 'text-red-600 hover:text-red-800' : 'text-blue-600 hover:text-blue-800'} font-medium inline-flex items-center`}
-      >
-        {linkText}
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
+        </a>
+      </div>
+    )}
+  </div>
+</section>
+
+<!-- Video Modal -->
+<div id="videoModal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center">
+  <div class="bg-white rounded-lg w-full max-w-4xl mx-4 sm:mx-auto p-1 relative">
+    <!-- Close button -->
+    <button id="closeVideoModal" class="absolute -top-10 right-0 text-white text-xl hover:text-gray-300 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    
+    <!-- Video container with 16:9 aspect ratio -->
+    <div class="relative" style="padding-bottom: 56.25%;">
+      <iframe id="videoFrame" class="absolute top-0 left-0 w-full h-full rounded-lg" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+      </iframe>
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Video modal functionality
+    const videoCards = document.querySelectorAll('.resource-card[data-type="video"]');
+    const videoModal = document.getElementById('videoModal');
+    const videoFrame = document.getElementById('videoFrame');
+    const closeVideoModal = document.getElementById('closeVideoModal');
+    
+    // Function to open video modal
+    function openVideoModal(videoId) {
+      if (videoFrame && videoModal && videoId) {
+        videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        videoModal.classList.remove('hidden');
+        videoModal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    
+    // Function to close video modal
+    function closeVideoModalFunc() {
+      if (videoFrame && videoModal) {
+        videoModal.classList.add('hidden');
+        videoModal.classList.remove('flex');
+        videoFrame.src = '';
+        document.body.style.overflow = '';
+      }
+    }
+    
+    // Add click event to video cards
+    videoCards.forEach(card => {
+      card.addEventListener('click', function(e) {
+        // If the click is on the card but not on the link
+        if (!e.target.closest('a')) {
+          const videoId = this.getAttribute('data-video-id');
+          if (videoId) {
+            e.preventDefault();
+            openVideoModal(videoId);
+          }
+        }
+      });
+    });
+    
+    // Add event listener to close button
+    if (closeVideoModal) {
+      closeVideoModal.addEventListener('click', closeVideoModalFunc);
+    }
+    
+    // Close when clicking outside the video
+    if (videoModal) {
+      videoModal.addEventListener('click', function(e) {
+        if (e.target === this) {
+          closeVideoModalFunc();
+        }
+      });
+    }
+    
+    // Close modal with ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && videoModal && !videoModal.classList.contains('hidden')) {
+        closeVideoModalFunc();
+      }
+    });
+  });
+</script>

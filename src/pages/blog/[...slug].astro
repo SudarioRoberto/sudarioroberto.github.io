@@ -1,0 +1,39 @@
+---
+// src/pages/blog/[...slug].astro
+import { getCollection } from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+// Generate static paths for all blog posts
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+// Get the blog post data from the props
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// Format the date
+const formattedDate = new Date(entry.data.publishDate).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<Navbar />
+
+<BlogLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  author={entry.data.author}
+  publishDate={formattedDate}
+  featuredImage={entry.data.featuredImage}
+>
+  <!-- The actual content of the blog post -->
+  <Content />
+</BlogLayout>

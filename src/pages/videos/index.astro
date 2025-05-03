@@ -1,50 +1,39 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Navbar from '../components/Navbar.astro';
+// src/pages/videos/index.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import VideoCard from '../../components/VideoCard.astro';
 
-// In a real implementation, this would likely come from a CMS or be Markdown files
-const videoContent = [
+// Your video data - make this exportable so it can be imported by HybridResources
+export const videoContent = [
   {
-    slug: 'microbiome-basics',
+    videoId: 'S-vZzJM9usA',
     title: 'Microbiome Basics for Producers',
     description: 'Learn the fundamentals of swine gut microbiome and its practical implications for farm management and performance.',
-    image: '/images/microbiome.png',
     date: 'March 15, 2025',
     duration: '30 min',
-    presenter: 'Andres Gomez',
-    videoId: 'S-vZzJM9usA'
+    presenter: 'Dr. Andres Gomez',
+    externalUrl: 'https://www.youtube.com/watch?v=S-vZzJM9usA'
   },
   {
-    slug: 'prebiotics-webinar',
-    title: 'Prebiotics and Probiotics: Implementation Guide',
-    description: 'A detailed walkthrough of how to implement prebiotics and probiotics strategies in commercial swine operations.',
-    image: '/images/postbiotic.png',
-    date: 'February 22, 2025',
-    duration: '45 min',
-    presenter: 'Sudario Roberto Silva Junior',
-    videoId: 'example123'
+    videoId: 'ybb6ENMEUCw',
+    title: 'Utilization of Food Waste Ingredients for Feed | International Rendering Symposium',
+    description: 'Discover innovative approaches to utilizing food waste as feed ingredients with Dr. Pedro E. Urriola from the University of Minnesota. This session at the International Rendering Symposium 2025 explores sustainable solutions to reduce waste and enhance animal nutrition.',
+    date: 'February 4, 2025',
+    duration: '40 min',
+    presenter: 'Dr. Pedro Urriola',
+    externalUrl: 'https://www.youtube.com/watch?v=ybb6ENMEUCw'
   },
-  {
-    slug: 'reducing-antibiotics',
-    title: 'Antibiotic Reduction Case Studies',
-    description: 'Real-world examples of farms that successfully reduced antibiotic use through microbiome optimization strategies.',
-    image: '/images/metadata.png',
-    date: 'January 18, 2025',
-    duration: '25 min',
-    presenter: 'Pedro Urriola',
-    videoId: 'example456'
-  },
-  {
-    slug: 'feed-efficiency',
-    title: 'Improving Feed Efficiency Through Microbiome Management',
-    description: 'Practical strategies to optimize feed utilization by supporting beneficial gut bacteria.',
-    image: '/images/nutrition.png',
-    date: 'December 10, 2024',
-    duration: '35 min',
-    presenter: 'Maria Johnson',
-    videoId: 'example789'
-  }
 ];
+
+// For each video, generate the thumbnail URL
+const videosWithThumbnails = videoContent.map(video => ({
+  ...video,
+  // Default high quality thumbnail URL
+  thumbnailUrl: `https://img.youtube.com/vi/${video.videoId}/maxresdefault.jpg`,
+  // Fallback image for development (when using example IDs)
+  fallbackImage: `/images/video-placeholder.jpg`
+}));
 ---
 
 <BaseLayout title="Videos" description="Educational videos and webinars from the MicroPig team">
@@ -61,49 +50,17 @@ const videoContent = [
       
       <!-- Video Grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {videoContent.map((video) => (
-          <article class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-            <div class="relative video-thumbnail-container" data-video-id={video.videoId}>
-              <img src={video.image} alt={video.title} class="w-full h-48 object-cover" />
-              <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                <div class="w-16 h-16 rounded-full bg-umn-maroon bg-opacity-90 flex items-center justify-center cursor-pointer play-button">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div class="p-6">
-              <div class="flex justify-between items-center text-sm text-gray-500 mb-3">
-                <time>{video.date}</time>
-                <span class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  {video.duration}
-                </span>
-              </div>
-              <h2 class="text-xl font-bold mb-3 text-umn-maroon">
-                <a href={`/videos/${video.slug}`} class="hover:text-umn-light-maroon transition-colors">
-                  {video.title}
-                </a>
-              </h2>
-              <p class="text-gray-600 mb-3">
-                {video.description}
-              </p>
-              <div class="flex justify-between items-center">
-                <span class="text-sm text-gray-600">
-                  Presenter: {video.presenter}
-                </span>
-                <button class="inline-flex items-center text-umn-maroon font-medium hover:text-umn-light-maroon transition-colors watch-video-btn" data-video-id={video.videoId}>
-                  Watch video
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </article>
+        {videosWithThumbnails.map((video) => (
+          <VideoCard
+            videoId={video.videoId}
+            title={video.title}
+            description={video.description}
+            date={video.date}
+            duration={video.duration}
+            presenter={video.presenter}
+            externalUrl={video.externalUrl}
+            thumbnailUrl={video.thumbnailUrl}
+          />
         ))}
       </div>
     </div>

@@ -1,0 +1,67 @@
+---
+// src/pages/blog/index.astro
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+// Get all blog posts and sort by publish date (newest first)
+const blogPosts = await getCollection('blog');
+const sortedPosts = blogPosts.sort((a, b) => 
+  new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
+);
+
+// Format date function
+const formatDate = (date) => {
+  return new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
+---
+
+<BaseLayout title="Blog" description="Insights and research updates from the MicroPig team">
+  <Navbar />
+  <div class="pt-32 pb-20 px-6 md:px-12 bg-umn-off-white">
+    <div class="container mx-auto max-w-6xl">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 text-umn-maroon">MicroPig Blog</h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Latest research findings, implementation strategies, and insights from our team
+        </p>
+      </div>
+      
+      <!-- Blog Posts Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sortedPosts.map((post) => (
+          <article class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+            <a href={`/blog/${post.slug}`}>
+              <img src={post.data.featuredImage} alt={post.data.title} class="w-full h-48 object-cover" />
+            </a>
+            <div class="p-6">
+              <div class="flex justify-between items-center text-sm text-gray-500 mb-3">
+                <time>{formatDate(post.data.publishDate)}</time>
+                <span>{post.data.author}</span>
+              </div>
+              <h2 class="text-xl font-bold mb-3 text-umn-maroon">
+                <a href={`/blog/${post.slug}`} class="hover:text-umn-light-maroon transition-colors">
+                  {post.data.title}
+                </a>
+              </h2>
+              <p class="text-gray-600 mb-5">
+                {post.data.description}
+              </p>
+              <a href={`/blog/${post.slug}`} class="inline-flex items-center text-umn-maroon font-medium hover:text-umn-light-maroon transition-colors">
+                Read more
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

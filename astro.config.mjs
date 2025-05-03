@@ -1,3 +1,4 @@
+// astro.config.mjs
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
@@ -6,6 +7,10 @@ export default defineConfig({
   site: 'https://sudarioroberto.github.io',
   base: '', // Empty base for username.github.io repositories
   output: 'static',
+  // Enable content collections
+  experimental: {
+    contentCollectionCache: true,
+  },
   vite: {
     build: {
       assetsInlineLimit: 0,

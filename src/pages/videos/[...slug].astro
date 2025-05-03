@@ -1,0 +1,44 @@
+---
+// Import any necessary components or data
+import VideoLayout from  '../../layouts/BaseLayout.astro'
+
+// This function is required for dynamic routes in static builds
+export async function getStaticPaths() {
+  // Here you need to return an array of objects with `params` and optional `props`
+  // The params represent all the possible slug values you want to generate
+
+  // This is where you would typically fetch your video data from an API or local files
+  // For example, assuming you have a function that returns video data:
+  // const videos = await getVideos();
+  
+  // For demonstration, I'll create some example data
+  const videos = [
+    { slug: 'intro-to-micropig', title: 'Introduction to MicroPig', description: 'Learn about MicroPig basics' },
+    { slug: 'getting-started', title: 'Getting Started with MicroPig', description: 'Your first steps' },
+    { slug: 'advanced-features', title: 'Advanced MicroPig Features', description: 'Taking it to the next level' },
+  ];
+
+  // Map the videos to the format Astro expects
+  return videos.map(video => ({
+    params: { slug: video.slug },
+    props: { video }
+  }));
+}
+
+// Get the video data from props
+const { video } = Astro.props;
+---
+
+<VideoLayout title={video.title}>
+  <main>
+    <h1>{video.title}</h1>
+    <p>{video.description}</p>
+    
+    <!-- Your video content goes here -->
+    <div class="video-container">
+      <!-- Add your video player or embed code here -->
+    </div>
+    
+    <!-- Additional content like related videos, comments, etc. -->
+  </main>
+</VideoLayout>

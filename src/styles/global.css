@@ -9,3 +9,7 @@
   --secondary: #FFCC33;     /* UMN Gold */
   --secondary-light: #FFDE7A; /* Light Gold */
 }
+
+section {
+  scroll-margin-top: 90px;
+}
