@@ -1,10 +1,10 @@
 ---
-title: "Microbiome Basics for Producers"
-description: "Learn the fundamentals of swine gut microbiome and its practical implications for farm management and performance."
-publishDate: "2025-03-15"
+title: "Unlocking the POTENTIAL of MICROBIOMICS in SWINE nutrition"
+description: "nutriNews International had the opportunity to speak with Dr. Andres Gomez Assistant Professor and Microbial Ecologist at the University of Minnesota. In this interview Dr. Gomez talked to us about some of his past research as well as his current work with the swine microbiome."
+publishDate: "2023-01-23"
 thumbnail: "/images/microbiome.png"
-videoId: "S-vZzJM9usA"
-duration: "30 min"
+videoId: "9fCDd3xrGiI"
+duration: "43 min"
 presenter: "Andres Gomez"
 tags: 
   - "Education"

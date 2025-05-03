@@ -12,12 +12,14 @@ const blogCollection = defineCollection({
     author: z.string().optional().default('MicroPig Research Team'),
     tags: z.array(z.string()).optional().default([]),
     featured: z.boolean().optional().default(false),
+    externalUrl: z.string().optional(),
+    isExternal: z.boolean().optional().default(false),
   }),
 });
 
 // Define schema for videos
 const videoCollection = defineCollection({
-  type: 'content', // Use data for JSON/YAML files
+  type: 'content', // Use content for Markdown files (not data type)
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -27,7 +29,6 @@ const videoCollection = defineCollection({
     duration: z.string(),
     presenter: z.string().optional(),
     tags: z.array(z.string()).optional().default([]),
-    externalUrl: z.string().optional(), // For linking to external videos
     featured: z.boolean().optional().default(false),
   }),
 });

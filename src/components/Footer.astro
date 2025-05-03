@@ -23,6 +23,28 @@ const professionalLinks = [
   { href: "/coming-soon", text: "Industry Partners" },
   { href: "/coming-soon", text: "Research Collaborators" },
 ];
+
+// Add acknowledgment data
+const acknowledgments = [
+  { 
+    name: "University of Minnesota", 
+    logo: "/images/umn.png",
+    url: "https://umn.edu",
+    width: "w-80" // Custom width class
+  },
+  { 
+    name: "Real Pork Trust Consortium", 
+    logo: "/images/porkcon.png",
+    url: "https://realpork.org",
+    width: "w-80" // Custom width class - wider for this logo
+  },
+  { 
+    name: "Pork Checkoff", 
+    logo: "/images/porklogo.jpg",
+    url: "https://porkcheckoff.org",
+    width: "w-100" // Custom width class
+  }
+];
 ---
 
 <footer class="py-12 px-6 md:px-12 bg-gray-900 text-gray-400 border-t border-gray-800">
@@ -90,7 +112,23 @@ const professionalLinks = [
         </ul>
       </div>
     </div>
-    
+
+    <!-- Acknowledgments Section -->
+    <div class="mb-12">
+      <h5 class="text-4xl font-bold text-white mb-4 text-center">Acknowledgments</h5>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center justify-items-center">
+        {acknowledgments.map(item => (
+          <a href={item.url} class="sponsor-link p-4 rounded-lg hover:bg-white/5 transition-colors" target="_blank" rel="noopener noreferrer">
+            <img 
+              src={item.logo} 
+              alt={item.name} 
+              class={`${item.width} h-auto mx-auto object-contain filter`} 
+            />
+          </a>
+        ))}
+      </div>
+    </div>
+
     <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
       <p>&copy; {currentYear} MicroPig. All rights reserved.</p>
       <div class="flex gap-6 mt-4 md:mt-0">
