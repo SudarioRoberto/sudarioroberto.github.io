@@ -1,239 +1,306 @@
 /* MicroPig - University of Minnesota Theme */
 
 :root {
-    /* Primary UMN Color Palette */
-    --primary: #7A0019;       /* UMN Maroon */
-    --primary-light: #900021; /* Light Maroon */
-    --secondary: #FFCC33;     /* UMN Gold */
-    --secondary-light: #FFDE7A; /* Light Gold */
-    --accent: #FFCC33;        /* UMN Gold as accent */
-    --neutral-light: #F9F7F6; /* UMN Off White */
-    --neutral-dark: #333333;  /* UMN Darker Gray */
-  }
+  /* Primary UMN Color Palette */
+  --primary: #7A0019;       /* UMN Maroon */
+  --primary-light: #900021; /* Light Maroon */
+  --secondary: #FFCC33;     /* UMN Gold */
+  --secondary-light: #FFDE7A; /* Light Gold */
+  --accent: #FFCC33;        /* UMN Gold as accent */
+  --neutral-light: #F9F7F6; /* UMN Off White */
+  --neutral-dark: #333333;  /* UMN Darker Gray */
   
-  /* Animation Classes */
-  .animate-fade-in {
-    animation: fadeIn 1s ease-in-out;
-  }
-  
-  .animate-slide-up {
-    animation: slideUp 0.8s ease-out forwards;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  @keyframes slideUp {
-    from { transform: translateY(30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-  
-  /* Section Styling */
-  section {
-    scroll-margin-top: 80px; /* For smooth scrolling with fixed header */
-  }
-  
-  .section-heading {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 2rem;
-  }
-  
-  .section-heading:after {
-    content: '';
-    position: absolute;
-    width: 60px;
-    height: 4px;
-    background-color: var(--secondary);
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  /* Slide up animation for elements */
-  .slide-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s ease;
-  }
-  
-  .slide-up.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Hero Section */
-  .video-background {
-    opacity: 0.15;
+  /* Alias for tailwind classes */
+  --umn-maroon: #7A0019;
+  --umn-light-maroon: #900021;
+  --umn-gold: #FFCC33;
+  --umn-light-gold: #FFDE7A;
+  --umn-off-white: #F9F7F6;
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Section Styling */
+section {
+  scroll-margin-top: 80px; /* For smooth scrolling with fixed header */
+}
+
+.section-heading {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.section-heading:after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 4px;
+  background-color: var(--secondary);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Slide up animation for elements */
+.slide-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+
+.slide-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero Section */
+.video-background {
+  opacity: 0.15;
+}
+
+.content-overlay {
+  background-color: rgba(122, 0, 25, 0.8); /* UMN Maroon with opacity */
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  backdrop-filter: blur(8px);
+}
+
+.hero-heading {
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  font-weight: 800;
+  border-bottom: 4px solid var(--secondary);
+  padding-bottom: 15px;
+  display: inline-block;
+}
+
+.hero-subheading {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+}
+
+/* Footer */
+footer a {
+  transition: all 0.2s ease;
+  color: var(--neutral-light);
+}
+
+footer a:hover {
+  color: white;
+}
+
+/* Navigation - UPDATED */
+header {
+  transition: all 0.3s ease;
+  z-index: 50;
+}
+
+nav {
+  transition: all 0.3s ease;
+}
+
+.nav-scrolled nav {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.nav-link {
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.nav-link:hover {
+  transform: translateY(-1px);
+}
+
+.nav-link:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -3px;
+  left: 0;
+  background-color: var(--primary);
+  transition: width 0.3s;
+}
+
+.nav-link:hover:after, .nav-link.active:after {
+  width: 100%;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--primary);
+}
+
+/* Mobile Menu - UPDATED */
+#mobile-menu {
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.mobile-nav-link {
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  display: block;
+}
+
+.mobile-nav-link:active {
+  background-color: rgba(255, 204, 51, 0.4);
+  transform: scale(0.98);
+}
+
+#resources-dropdown-menu {
+  transition: max-height 0.3s ease-in-out, opacity 0.2s;
+  overflow: hidden;
+}
+
+/* Custom Button Classes */
+.primary-button {
+  background-color: var(--primary);
+  color: white;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.primary-button:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.secondary-button {
+  background-color: transparent;
+  border: 2px solid var(--secondary);
+  color: var(--secondary);
+  transition: all 0.3s ease;
+}
+
+.secondary-button:hover {
+  background-color: var(--secondary);
+  color: var(--primary);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.accent-button {
+  background-color: var(--secondary);
+  color: var(--primary);
+  transition: all 0.3s ease;
+}
+
+.accent-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Styles */
+.card {
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card {
+  border-radius: 12px;
+  border-left: 4px solid var(--primary);
+}
+
+/* Social Icons */
+.social-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Logo hover effect */
+header a img {
+  transition: transform 0.3s ease;
+}
+
+header a:hover img {
+  transform: scale(1.05);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .hero-heading {
+    font-size: 2.5rem;
   }
   
   .content-overlay {
-    background-color: rgba(122, 0, 25, 0.8); /* UMN Maroon with opacity */
-    border-radius: 15px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-    padding: 40px;
-    backdrop-filter: blur(8px);
+    padding: 25px;
   }
   
-  .hero-heading {
-    color: white;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    font-weight: 800;
-    border-bottom: 4px solid var(--secondary);
-    padding-bottom: 15px;
-    display: inline-block;
-  }
-  
-  .hero-subheading {
-    color: rgba(255, 255, 255, 0.95);
-    font-weight: 500;
-  }
-  
-  /* Footer */
-  footer a {
-    transition: all 0.2s ease;
-    color: var(--neutral-light);
-  }
-  
-  footer a:hover {
-    color: white;
-  }
-  
-  /* Navigation */
+  /* Make navbar more compact on mobile */
   nav {
-    transition: all 0.3s ease;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
   }
   
-  .nav-link {
-    position: relative;
-    padding-bottom: 2px;
-    transition: color 0.3s;
+  /* Improve mobile form interactions */
+  input, select, textarea {
+    font-size: 16px !important; /* Prevents iOS zoom on focus */
   }
   
-  .nav-link:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -3px;
-    left: 0;
-    background-color: var(--secondary);
-    transition: width 0.3s;
-  }
-  
-  .nav-link:hover, .nav-link.active {
-    color: var(--primary);
-  }
-  
-  .nav-link:hover:after, .nav-link.active:after {
-    width: 100%;
-  }
-  
-  /* Custom Button Classes */
-  .primary-button {
-    background-color: var(--primary);
-    color: white;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-  }
-  
-  .primary-button:hover {
-    background-color: var(--primary-light);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  .secondary-button {
-    background-color: transparent;
-    border: 2px solid var(--secondary);
-    color: var(--secondary);
-    transition: all 0.3s ease;
-  }
-  
-  .secondary-button:hover {
-    background-color: var(--secondary);
-    color: var(--primary);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  .accent-button {
-    background-color: var(--secondary);
-    color: var(--primary);
-    transition: all 0.3s ease;
-  }
-  
-  .accent-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Card Styles */
-  .card {
-    transition: all 0.3s ease;
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  
-  .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-  }
-  
-  .feature-card {
-    border-radius: 12px;
-    border-left: 4px solid var(--primary);
-  }
-  
-  /* Social Icons */
-  .social-icon {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    transition: all 0.3s ease;
-  }
-  
-  .social-icon:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-  }
-  
-  /* Mobile Menu */
   #mobile-menu {
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    padding-top: 80px; /* Ensure content appears below the navbar */
   }
   
-  /* Media Queries */
-  @media (max-width: 768px) {
-    .hero-heading {
-      font-size: 2.5rem;
-    }
-    
-    .content-overlay {
-      padding: 25px;
-    }
-    
-    /* Make navbar more compact on mobile */
-    nav {
-      padding-top: 0.5rem !important;
-      padding-bottom: 0.5rem !important;
-    }
-    
-    /* Improve mobile form interactions */
-    input, select, textarea {
-      font-size: 16px !important; /* Prevents iOS zoom on focus */
-    }
+  .mobile-nav-link {
+    font-size: 1.25rem;
+    padding: 12px 16px;
+    margin-bottom: 8px;
   }
+}
 
-  section {
-    scroll-margin-top: 90px;
+@media (max-width: 1023px) {
+  #mobile-menu {
+    padding-top: 80px; /* Ensure content appears below the navbar */
   }
+}
+
+/* Prevent content from being hidden under the navbar */
+section {
+  scroll-margin-top: 90px;
+}

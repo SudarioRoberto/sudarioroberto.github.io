@@ -10,7 +10,7 @@
         <img src="/images/logo.png" alt="MicroPig Logo" class="h-20 object-contain transition-transform duration-300 hover:scale-105" />
       <div class="flex flex-col leading-tight">
         <span class="text-2xl md:text-3xl font-bold text-gray-900">MicroPig</span>
-        <span class="hidden sm:block text-sm text-gray-700 tracking-wide">Swine Microbiome Research</span>
+        <span class="sm:block text-sm text-gray-700 tracking-wide">Swine Microbiome Research</span>
       </div>
       </a>
       
@@ -58,17 +58,19 @@
       <a href="/#approach" class="mobile-nav-link block px-3 py-2 rounded-md">Our Approach</a>
       <a href="/#team" class="mobile-nav-link block px-3 py-2 rounded-md">Team</a>
       
-      <!-- Mobile Resources Dropdown -->
-      <div class="mobile-dropdown">
+      <!-- Resources entry and dropdown -->
+      <div class="relative">
         <a href="/#resources" class="mobile-nav-link block px-3 py-2 rounded-md">Resources</a>
-        <div class="mobile-dropdown-toggle flex items-center justify-center w-8 h-8 absolute right-3 top-[12.75rem] rounded-full bg-umn-gold/20 text-umn-maroon hover:bg-umn-gold/40">
+        <!-- Resources dropdown toggle button -->
+        <div class="mobile-dropdown-toggle flex items-center justify-center w-8 h-8 absolute right-3 top-0 rounded-full bg-umn-gold/20 text-umn-maroon hover:bg-umn-gold/40">
           <svg xmlns="http://www.w3.org/2000/svg" class="dropdown-icon h-4 w-4 transform transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
           </svg>
         </div>
+        <!-- Resources dropdown content -->
         <div class="mobile-dropdown-content hidden pl-6 py-2 space-y-1">
+          <a href="/videos" class="mobile-nav-link block px-3 py-2 text-sm rounded-md">Educational Videos</a>
           <a href="https://scholar.google.com/citations?hl=en&user=0j08MsQAAAAJ&view_op=list_works&sortby=pubdate" class="mobile-nav-link block px-3 py-2 text-sm rounded-md">Research Publications</a>
-          <a href="/video" class="mobile-nav-link block px-3 py-2 text-sm rounded-md">Educational Videos</a>
           <a href="https://github.com/SudarioRoberto" class="mobile-nav-link block px-3 py-2 text-sm rounded-md">Tools</a>
         </div>
       </div>
@@ -121,7 +123,7 @@
     mobileNavLinks.forEach(link => {
       link.addEventListener('click', () => {
         // Don't close menu when clicking the Resources parent link or dropdown toggle
-        if (!link.closest('.mobile-dropdown-toggle') && !link.classList.contains('mobile-dropdown')) {
+        if (!link.closest('.mobile-dropdown-toggle') && !link.closest('.mobile-dropdown-content')) {
           // Add a slight delay to allow the click to register before closing the menu
           setTimeout(() => {
             mobileMenu.classList.add('hidden');
@@ -132,9 +134,6 @@
     });
   });
 </script>
-
-<script src="/scripts/nav-enhancement.js" defer></script>
-
 
 <style>
   /* Mobile navigation styles */
@@ -164,5 +163,21 @@
   /* Animation for dropdown */
   .mobile-dropdown-content {
     transition: all 0.3s ease;
+  }
+  
+  /* Custom underline effect for nav links */
+  :global(.nav-link::after) {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #7A0019;
+    transition: width 0.3s ease;
+  }
+
+  :global(.nav-link:hover::after) {
+    width: 100%;
   }
 </style>
