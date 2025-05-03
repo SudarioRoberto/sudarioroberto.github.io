@@ -17,10 +17,10 @@ const contentDir = '/src/content/';
 const contentEntryGlob = {
   "/src/content/blog/meta-analysis.md": () => import("./blog/meta-analysis.mjs"),
   "/src/content/blog/prebiotic.md": () => import("./blog/prebiotic.mjs"),
-  "/src/content/videos/waste.md": () => import("./videos/waste.mjs"),
-  "/src/content/videos/microbiome.md": () => import("./videos/microbiome.mjs"),
   "/src/content/videos/digestibility.md": () => import("./videos/digestibility.mjs"),
   "/src/content/videos/microbiome-basics.md": () => import("./videos/microbiome-basics.mjs"),
+  "/src/content/videos/waste.md": () => import("./videos/waste.mjs"),
+  "/src/content/videos/microbiome.md": () => import("./videos/microbiome.mjs"),
 };
 const contentCollectionToEntryMap = createCollectionToGlobResultMap({
 	globResult: contentEntryGlob,
@@ -39,7 +39,7 @@ const collectionToEntryMap = createCollectionToGlobResultMap({
 });
 
 let lookupMap = {};
-lookupMap = {"blog":{"type":"content","entries":{"meta-analysis":"/src/content/blog/meta-analysis.md","prebiotic":"/src/content/blog/prebiotic.md"}},"videos":{"type":"content","entries":{"waste":"/src/content/videos/waste.md","microbiome":"/src/content/videos/microbiome.md","digestibility":"/src/content/videos/digestibility.md","microbiome-basics":"/src/content/videos/microbiome-basics.md"}}};
+lookupMap = {"blog":{"type":"content","entries":{"meta-analysis":"/src/content/blog/meta-analysis.md","prebiotic":"/src/content/blog/prebiotic.md"}},"videos":{"type":"content","entries":{"digestibility":"/src/content/videos/digestibility.md","microbiome-basics":"/src/content/videos/microbiome-basics.md","waste":"/src/content/videos/waste.md","microbiome":"/src/content/videos/microbiome.md"}}};
 
 function createGlobLookup(glob) {
 	return async (collection, lookupId) => {
@@ -53,10 +53,10 @@ function createGlobLookup(glob) {
 const renderEntryGlob = {
   "/src/content/blog/meta-analysis.md": () => import("./blog/meta-analysis.entry.mjs"),
   "/src/content/blog/prebiotic.md": () => import("./blog/prebiotic.entry.mjs"),
-  "/src/content/videos/waste.md": () => import("./videos/waste.entry.mjs"),
-  "/src/content/videos/microbiome.md": () => import("./videos/microbiome.entry.mjs"),
   "/src/content/videos/digestibility.md": () => import("./videos/digestibility.entry.mjs"),
   "/src/content/videos/microbiome-basics.md": () => import("./videos/microbiome-basics.entry.mjs"),
+  "/src/content/videos/waste.md": () => import("./videos/waste.entry.mjs"),
+  "/src/content/videos/microbiome.md": () => import("./videos/microbiome.entry.mjs"),
 };
 const collectionToRenderEntryMap = createCollectionToGlobResultMap({
 	globResult: renderEntryGlob,
