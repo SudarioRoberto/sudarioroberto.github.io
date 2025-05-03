@@ -1,5 +1,5 @@
 /* empty css                                       */import { createComponent, renderTemplate, renderComponent, maybeRenderHead, addAttribute } from '../astro.405de378.js';
-import { $$Navbar, $$BaseLayout } from './_...slug_.astro.68660be8.js';
+import { $$Navbar, $$BaseLayout } from './_...slug_.astro.395a6889.js';
 import 'clsx';
 import 'html-escaper';
 import '../../content/entry.mjs';
