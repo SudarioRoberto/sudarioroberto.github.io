@@ -16,9 +16,9 @@ const contentDir = '/src/content/';
 
 const contentEntryGlob = {
   "/src/content/videos/digestibility.md": () => import("./videos/digestibility.mjs"),
-  "/src/content/videos/waste.md": () => import("./videos/waste.mjs"),
-  "/src/content/videos/microbiome-basics.md": () => import("./videos/microbiome-basics.mjs"),
   "/src/content/videos/microbiome.md": () => import("./videos/microbiome.mjs"),
+  "/src/content/videos/microbiome-basics.md": () => import("./videos/microbiome-basics.mjs"),
+  "/src/content/videos/waste.md": () => import("./videos/waste.mjs"),
   "/src/content/blog/prebiotic.md": () => import("./blog/prebiotic.mjs"),
   "/src/content/blog/meta-analysis.md": () => import("./blog/meta-analysis.mjs"),
 };
@@ -39,7 +39,7 @@ const collectionToEntryMap = createCollectionToGlobResultMap({
 });
 
 let lookupMap = {};
-lookupMap = {"videos":{"type":"content","entries":{"digestibility":"/src/content/videos/digestibility.md","waste":"/src/content/videos/waste.md","microbiome-basics":"/src/content/videos/microbiome-basics.md","microbiome":"/src/content/videos/microbiome.md"}},"blog":{"type":"content","entries":{"prebiotic":"/src/content/blog/prebiotic.md","meta-analysis":"/src/content/blog/meta-analysis.md"}}};
+lookupMap = {"videos":{"type":"content","entries":{"digestibility":"/src/content/videos/digestibility.md","microbiome":"/src/content/videos/microbiome.md","microbiome-basics":"/src/content/videos/microbiome-basics.md","waste":"/src/content/videos/waste.md"}},"blog":{"type":"content","entries":{"prebiotic":"/src/content/blog/prebiotic.md","meta-analysis":"/src/content/blog/meta-analysis.md"}}};
 
 function createGlobLookup(glob) {
 	return async (collection, lookupId) => {
@@ -52,9 +52,9 @@ function createGlobLookup(glob) {
 
 const renderEntryGlob = {
   "/src/content/videos/digestibility.md": () => import("./videos/digestibility.entry.mjs"),
-  "/src/content/videos/waste.md": () => import("./videos/waste.entry.mjs"),
-  "/src/content/videos/microbiome-basics.md": () => import("./videos/microbiome-basics.entry.mjs"),
   "/src/content/videos/microbiome.md": () => import("./videos/microbiome.entry.mjs"),
+  "/src/content/videos/microbiome-basics.md": () => import("./videos/microbiome-basics.entry.mjs"),
+  "/src/content/videos/waste.md": () => import("./videos/waste.entry.mjs"),
   "/src/content/blog/prebiotic.md": () => import("./blog/prebiotic.entry.mjs"),
   "/src/content/blog/meta-analysis.md": () => import("./blog/meta-analysis.entry.mjs"),
 };

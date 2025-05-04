@@ -1,7 +1,7 @@
 /* empty css                                       */import { createAstro, createComponent, renderTemplate, maybeRenderHead, addAttribute, renderComponent } from '../astro.0dd1d872.js';
 import 'html-escaper';
 import 'clsx';
-import { $$Navbar, $$BaseLayout } from './_...slug_.astro.953c0a0b.js';
+import { $$Navbar, $$BaseLayout } from './_...slug_.astro.879eda8a.js';
 /* empty css                          */import { getCollection } from '../../content/entry.mjs';
 
 const $$Astro$5 = createAstro("https://sudarioroberto.github.io");
