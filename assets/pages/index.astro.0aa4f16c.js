@@ -1,7 +1,7 @@
 /* empty css                                       */import { createAstro, createComponent, renderTemplate, maybeRenderHead, addAttribute, renderComponent } from '../astro.0dd1d872.js';
 import 'html-escaper';
 import 'clsx';
-import { $$Navbar, $$BaseLayout } from './_...slug_.astro.879eda8a.js';
+import { $$Navbar, $$BaseLayout } from './_...slug_.astro.1f026d22.js';
 /* empty css                          */import { getCollection } from '../../content/entry.mjs';
 
 const $$Astro$5 = createAstro("https://sudarioroberto.github.io");
@@ -451,7 +451,7 @@ Our research connects gut microbiome science with practical feeding strategies f
 }, "C:/Users/sudar/micropig-website/src/components/Footer.astro", void 0);
 
 const $$Index$2 = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": "Swine Microbiome Research", "description": "Transforming swine health through microbiome science and collaborative research at the University of Minnesota." }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Navbar", $$Navbar, {})}  ${renderComponent($$result2, "Hero", $$Hero, {})} ${renderComponent($$result2, "ValueProposition", $$ValueProposition, {})} ${renderComponent($$result2, "Research", $$Research, {})} ${renderComponent($$result2, "Impact", $$Impact, {})} ${renderComponent($$result2, "Approach", $$Approach, {})} ${renderComponent($$result2, "Stats", $$Stats, {})} ${renderComponent($$result2, "Team", $$Team, {})} ${renderComponent($$result2, "HybridResources", $$HybridResources, {})} ${renderComponent($$result2, "Newsletter", $$Newsletter, {})} ${renderComponent($$result2, "Contact", $$ContactSection, {})} ${renderComponent($$result2, "Footer", $$Footer, {})} ` })}`;
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": "Swine Microbiome Research", "description": "Transforming swine health through microbiome science and collaborative research at the University of Minnesota." }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Navbar", $$Navbar, {})}  ${renderComponent($$result2, "Hero", $$Hero, {})} ${renderComponent($$result2, "ValueProposition", $$ValueProposition, {})} ${renderComponent($$result2, "HybridResources", $$HybridResources, {})} ${renderComponent($$result2, "Impact", $$Impact, {})} ${renderComponent($$result2, "Approach", $$Approach, {})} ${renderComponent($$result2, "Stats", $$Stats, {})} ${renderComponent($$result2, "Team", $$Team, {})} ${renderComponent($$result2, "Research", $$Research, {})} ${renderComponent($$result2, "Newsletter", $$Newsletter, {})} ${renderComponent($$result2, "Contact", $$ContactSection, {})} ${renderComponent($$result2, "Footer", $$Footer, {})} ` })}`;
 }, "C:/Users/sudar/micropig-website/src/pages/index.astro", void 0);
 
 const $$file$2 = "C:/Users/sudar/micropig-website/src/pages/index.astro";
