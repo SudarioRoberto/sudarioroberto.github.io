@@ -1,7 +1,7 @@
 /* empty css                                       */import { createAstro, createComponent, renderTemplate, maybeRenderHead, addAttribute, renderComponent } from '../astro.0dd1d872.js';
 import 'html-escaper';
 import 'clsx';
-import { $$Navbar, $$BaseLayout } from './_...slug_.astro.99d3ec6b.js';
+import { $$Navbar, $$BaseLayout } from './_...slug_.astro.953c0a0b.js';
 /* empty css                          */import { getCollection } from '../../content/entry.mjs';
 
 const $$Astro$5 = createAstro("https://sudarioroberto.github.io");
@@ -423,45 +423,31 @@ const $$Footer = createComponent(($$result, $$props, $$slots) => {
   ];
   const resourceLinks = [
     { href: "https://scholar.google.com/citations?hl=en&user=0j08MsQAAAAJ&view_op=list_works&sortby=pubdate", text: "Research Publications" },
-    { href: "https://www.youtube.com/watch?v=S-vZzJM9usA", text: "Educational Videos" },
-    { href: "https://www.youtube.com/watch?v=S-vZzJM9usA", text: "Webinar Recordings" },
+    { href: "/videos", text: "Educational Videos" },
     { href: "https://github.com/SudarioRoberto", text: "Implementation Tools" }
-  ];
-  const professionalLinks = [
-    { href: "/coming-soon", text: "Producers" },
-    { href: "/coming-soon", text: "Veterinarians" },
-    { href: "/coming-soon", text: "Nutritionists" },
-    { href: "/coming-soon", text: "Industry Partners" },
-    { href: "/coming-soon", text: "Research Collaborators" }
   ];
   const acknowledgments = [
     {
       name: "University of Minnesota",
       logo: "/images/umn.png",
-      url: "https://umn.edu",
-      width: "w-80"
-      // Custom width class
+      url: "https://umn.edu"
     },
     {
       name: "Real Pork Trust Consortium",
       logo: "/images/porkcon.png",
-      url: "https://realpork.org",
-      width: "w-80"
-      // Custom width class - wider for this logo
+      url: "https://www.realporktrust.org/"
     },
     {
       name: "Pork Checkoff",
       logo: "/images/porklogo.jpg",
-      url: "https://porkcheckoff.org",
-      width: "w-100"
-      // Custom width class
+      url: "https://porkcheckoff.org"
     }
   ];
-  return renderTemplate`${maybeRenderHead()}<footer class="py-12 px-6 md:px-12 bg-gray-900 text-gray-400 border-t border-gray-800" data-astro-cid-sz7xmlte> <div class="container mx-auto max-w-6xl" data-astro-cid-sz7xmlte> <div class="grid md:grid-cols-4 gap-8 mb-12" data-astro-cid-sz7xmlte> <!-- Logo and Description --> <div data-astro-cid-sz7xmlte> <div class="flex items-center space-x-3 mb-6" data-astro-cid-sz7xmlte> <div class="w-12 h-12 rounded-full bg-gradient-to-br to-umn-light-maroon flex items-center justify-center" data-astro-cid-sz7xmlte> <img src="/images/logo2.png" alt="MicroPig Logo" class="h-54 w-40 object-contain" data-astro-cid-sz7xmlte> </div> <div class="hidden md:flex flex-col" data-astro-cid-sz7xmlte> <span class="text-xl font-bold text-white" data-astro-cid-sz7xmlte>MicroPig</span> <span class="text-xs text-gray-400 tracking-wide" data-astro-cid-sz7xmlte>Swine Microbiome Research</span> </div> <div class="md:hidden" data-astro-cid-sz7xmlte> <span class="text-2xl font-bold text-white" data-astro-cid-sz7xmlte>MicroPig</span> </div> </div> <p class="mb-4 text-sm" data-astro-cid-sz7xmlte>
+  return renderTemplate`${maybeRenderHead()}<footer class="pt-12 bg-gray-900 text-gray-400 border-t border-gray-800" data-astro-cid-sz7xmlte> <!-- Acknowledgments Section - Now as a prominent banner at the top --> <div class="py-12 px-6 md:px-12 border-b border-gray-800 bg-gray-900/50" data-astro-cid-sz7xmlte> <div class="container mx-auto max-w-6xl" data-astro-cid-sz7xmlte> <h5 class="text-4xl font-bold text-white mb-8 text-center" data-astro-cid-sz7xmlte>Acknowledgments</h5> <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center" data-astro-cid-sz7xmlte> ${acknowledgments.map((item) => renderTemplate`<a${addAttribute(item.url, "href")} class="sponsor-link p-6 rounded-xl  transition-all duration-300 transform hover:-translate-y-1 w-full flex items-center justify-center h-36 md:h-48" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte> <img${addAttribute(item.logo, "src")}${addAttribute(item.name, "alt")} class="h-auto w-3/2 object-contain mx-auto" data-astro-cid-sz7xmlte> </a>`)} </div> </div> </div> <!-- Main Footer Content --> <div class="py-12 px-6 md:px-12" data-astro-cid-sz7xmlte> <div class="container mx-auto max-w-6xl" data-astro-cid-sz7xmlte> <div class="grid md:grid-cols-3 gap-8 mb-12" data-astro-cid-sz7xmlte> <!-- Logo and Description --> <div data-astro-cid-sz7xmlte> <div class="flex items-center space-x-3 mb-6" data-astro-cid-sz7xmlte> <div class=" rounded-full bg-gradient-to-br flex items-center justify-center" data-astro-cid-sz7xmlte> <img src="/images/logo2.png" alt="MicroPig Logo" class="h-8 w-8 object-contain" data-astro-cid-sz7xmlte> </div> <div class="flex flex-col" data-astro-cid-sz7xmlte> <span class="text-xl font-bold text-white" data-astro-cid-sz7xmlte>MicroPig</span> <span class="text-xs text-gray-400 tracking-wide" data-astro-cid-sz7xmlte>Swine Microbiome Research</span> </div> </div> <p class="mb-4 text-sm" data-astro-cid-sz7xmlte>
 Transforming swine health through microbiome science and collaborative research.
 </p> <p class="text-xs text-gray-500" data-astro-cid-sz7xmlte>
 Our research connects gut microbiome science with practical feeding strategies for healthier, more sustainable pork production.
-</p> </div> <div data-astro-cid-sz7xmlte> <h5 class="font-bold text-white text-lg mb-4" data-astro-cid-sz7xmlte>Quick Links</h5> <ul class="space-y-3" data-astro-cid-sz7xmlte> ${quickLinks.map((link) => renderTemplate`<li data-astro-cid-sz7xmlte> <a${addAttribute(link.href, "href")} class="hover:text-white transition-colors footer-link" data-astro-cid-sz7xmlte> ${link.text} </a> </li>`)} </ul> </div> <div data-astro-cid-sz7xmlte> <h5 class="font-bold text-white text-lg mb-4" data-astro-cid-sz7xmlte>Resources</h5> <ul class="space-y-3" data-astro-cid-sz7xmlte> ${resourceLinks.map((link) => renderTemplate`<li data-astro-cid-sz7xmlte> <a${addAttribute(link.href, "href")} class="hover:text-white transition-colors footer-link" data-astro-cid-sz7xmlte> ${link.text} </a> </li>`)} </ul> </div> <div data-astro-cid-sz7xmlte> <h5 class="font-bold text-white text-lg mb-4" data-astro-cid-sz7xmlte>For Professionals</h5> <ul class="space-y-3" data-astro-cid-sz7xmlte> ${professionalLinks.map((link) => renderTemplate`<li data-astro-cid-sz7xmlte> <a${addAttribute(link.href, "href")} class="hover:text-white transition-colors footer-link" data-astro-cid-sz7xmlte> ${link.text} </a> </li>`)} </ul> </div> </div> <!-- Acknowledgments Section --> <div class="mb-12" data-astro-cid-sz7xmlte> <h5 class="text-4xl font-bold text-white mb-4 text-center" data-astro-cid-sz7xmlte>Acknowledgments</h5> <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center justify-items-center" data-astro-cid-sz7xmlte> ${acknowledgments.map((item) => renderTemplate`<a${addAttribute(item.url, "href")} class="sponsor-link p-4 rounded-lg hover:bg-white/5 transition-colors" target="_blank" rel="noopener noreferrer" data-astro-cid-sz7xmlte> <img${addAttribute(item.logo, "src")}${addAttribute(item.name, "alt")}${addAttribute(`${item.width} h-auto mx-auto object-contain filter`, "class")} data-astro-cid-sz7xmlte> </a>`)} </div> </div> <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center" data-astro-cid-sz7xmlte> <p data-astro-cid-sz7xmlte>&copy; ${currentYear} MicroPig. All rights reserved.</p> <div class="flex gap-6 mt-4 md:mt-0" data-astro-cid-sz7xmlte> <a href="/coming-soon" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Privacy Policy</a> <a href="/coming-soon" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Terms of Service</a> <a href="/coming-soon" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Accessibility</a> </div> </div> </div> </footer> `;
+</p> <!-- Social Media Links --> <div class="flex mt-6 space-x-4" data-astro-cid-sz7xmlte> <a href="https://www.linkedin.com/in/sudarioroberto/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-umn-maroon transition-colors duration-300" data-astro-cid-sz7xmlte> <i class="fab fa-linkedin-in text-white" data-astro-cid-sz7xmlte></i> </a> <a href="https://github.com/SudarioRoberto" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-umn-maroon transition-colors duration-300" data-astro-cid-sz7xmlte> <i class="fab fa-github text-white" data-astro-cid-sz7xmlte></i> </a> <a href="https://www.youtube.com/@nutriNewsInternational" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-umn-maroon transition-colors duration-300" data-astro-cid-sz7xmlte> <i class="fab fa-youtube text-white" data-astro-cid-sz7xmlte></i> </a> </div> </div> <!-- Quick Links --> <div data-astro-cid-sz7xmlte> <h5 class="font-bold text-white text-lg mb-4" data-astro-cid-sz7xmlte>Quick Links</h5> <ul class="space-y-3" data-astro-cid-sz7xmlte> ${quickLinks.map((link) => renderTemplate`<li data-astro-cid-sz7xmlte> <a${addAttribute(link.href, "href")} class="hover:text-white transition-colors footer-link flex items-center" data-astro-cid-sz7xmlte> <i class="fas fa-chevron-right text-xs text-umn-gold mr-2" data-astro-cid-sz7xmlte></i> ${link.text} </a> </li>`)} </ul> </div> <!-- Resources --> <div data-astro-cid-sz7xmlte> <h5 class="font-bold text-white text-lg mb-4" data-astro-cid-sz7xmlte>Resources</h5> <ul class="space-y-3" data-astro-cid-sz7xmlte> ${resourceLinks.map((link) => renderTemplate`<li data-astro-cid-sz7xmlte> <a${addAttribute(link.href, "href")} class="hover:text-white transition-colors footer-link flex items-center"${addAttribute(link.href.startsWith("http") ? "_blank" : void 0, "target")}${addAttribute(link.href.startsWith("http") ? "noopener noreferrer" : void 0, "rel")} data-astro-cid-sz7xmlte> <i class="fas fa-chevron-right text-xs text-umn-gold mr-2" data-astro-cid-sz7xmlte></i> ${link.text} </a> </li>`)} </ul> <!-- Contact Info --> <div class="mt-8" data-astro-cid-sz7xmlte> <h5 class="font-bold text-white text-lg mb-4" data-astro-cid-sz7xmlte>Contact Us</h5> <div class="space-y-3" data-astro-cid-sz7xmlte> <a href="mailto:ssilvaju@umn.edu" class="flex items-start hover:text-white transition-colors" data-astro-cid-sz7xmlte> <i class="fas fa-envelope mt-1 text-umn-gold mr-3" data-astro-cid-sz7xmlte></i> <span data-astro-cid-sz7xmlte>ssilvaju@umn.edu</span> </a> <a href="tel:+16126663177" class="flex items-start hover:text-white transition-colors" data-astro-cid-sz7xmlte> <i class="fas fa-phone mt-1 text-umn-gold mr-3" data-astro-cid-sz7xmlte></i> <span data-astro-cid-sz7xmlte>(612) 666-3177</span> </a> <div class="flex items-start" data-astro-cid-sz7xmlte> <i class="fas fa-map-marker-alt mt-1 text-umn-gold mr-3" data-astro-cid-sz7xmlte></i> <span data-astro-cid-sz7xmlte>Department of Animal Science<br data-astro-cid-sz7xmlte>University of Minnesota</span> </div> </div> </div> </div> </div> <!-- Copyright and Legal Links --> <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center" data-astro-cid-sz7xmlte> <p class="text-sm" data-astro-cid-sz7xmlte>&copy; ${currentYear} MicroPig. All rights reserved.</p> <div class="flex gap-6 mt-4 md:mt-0 text-sm" data-astro-cid-sz7xmlte> <a href="/coming-soon" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Privacy Policy</a> <a href="/coming-soon" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Terms of Service</a> <a href="/coming-soon" class="hover:text-white transition-colors" data-astro-cid-sz7xmlte>Accessibility</a> </div> </div> </div> </div> </footer> `;
 }, "C:/Users/sudar/micropig-website/src/components/Footer.astro", void 0);
 
 const $$Index$2 = createComponent(($$result, $$props, $$slots) => {

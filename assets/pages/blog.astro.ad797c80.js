@@ -1,6 +1,6 @@
 /* empty css                                       */import { createComponent, renderTemplate, renderComponent, maybeRenderHead, addAttribute } from '../astro.0dd1d872.js';
 import 'html-escaper';
-import { $$Navbar, $$BaseLayout } from './_...slug_.astro.99d3ec6b.js';
+import { $$Navbar, $$BaseLayout } from './_...slug_.astro.953c0a0b.js';
 import 'clsx';
 import '../../content/entry.mjs';
 /* empty css                                       *//* empty css                                       *//* empty css                                       */

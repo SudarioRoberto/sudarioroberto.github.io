@@ -1,6 +1,6 @@
 export { renderers } from '../../renderers.mjs';
 export { onRequest } from '../../_empty-middleware.mjs';
 
-const page = () => import('../../assets/pages/_...slug_.astro.99d3ec6b.js').then(n => n.____slug_);
+const page = () => import('../../assets/pages/_...slug_.astro.953c0a0b.js').then(n => n.____slug_);
 
 export { page };

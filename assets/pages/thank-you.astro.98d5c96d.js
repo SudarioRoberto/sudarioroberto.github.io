@@ -1,7 +1,7 @@
 /* empty css                                       */import { createComponent, renderTemplate, renderComponent, maybeRenderHead } from '../astro.0dd1d872.js';
 import 'html-escaper';
 import 'clsx';
-import { $$BaseLayout } from './_...slug_.astro.99d3ec6b.js';
+import { $$BaseLayout } from './_...slug_.astro.953c0a0b.js';
 import '../../content/entry.mjs';
 /* empty css                                       *//* empty css                                       *//* empty css                                       */
 const $$ThankYou = createComponent(($$result, $$props, $$slots) => {
