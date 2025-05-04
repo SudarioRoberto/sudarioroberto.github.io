@@ -11,17 +11,8 @@ const quickLinks = [
 
 const resourceLinks = [
   { href: "https://scholar.google.com/citations?hl=en&user=0j08MsQAAAAJ&view_op=list_works&sortby=pubdate", text: "Research Publications" },
-  { href: "https://www.youtube.com/watch?v=S-vZzJM9usA", text: "Educational Videos" },
-  { href: "https://www.youtube.com/watch?v=S-vZzJM9usA", text: "Webinar Recordings" },
+  { href: "/videos", text: "Educational Videos" },
   { href: "https://github.com/SudarioRoberto", text: "Implementation Tools" },
-];
-
-const professionalLinks = [
-  { href: "/coming-soon", text: "Producers" },
-  { href: "/coming-soon", text: "Veterinarians" },
-  { href: "/coming-soon", text: "Nutritionists" },
-  { href: "/coming-soon", text: "Industry Partners" },
-  { href: "/coming-soon", text: "Research Collaborators" },
 ];
 
 // Add acknowledgment data
@@ -29,112 +20,134 @@ const acknowledgments = [
   { 
     name: "University of Minnesota", 
     logo: "/images/umn.png",
-    url: "https://umn.edu",
-    width: "w-80" // Custom width class
+    url: "https://umn.edu"
   },
   { 
     name: "Real Pork Trust Consortium", 
     logo: "/images/porkcon.png",
-    url: "https://realpork.org",
-    width: "w-80" // Custom width class - wider for this logo
+    url: "https://www.realporktrust.org/"
   },
   { 
     name: "Pork Checkoff", 
     logo: "/images/porklogo.jpg",
-    url: "https://porkcheckoff.org",
-    width: "w-100" // Custom width class
+    url: "https://porkcheckoff.org"
   }
 ];
 ---
 
-<footer class="py-12 px-6 md:px-12 bg-gray-900 text-gray-400 border-t border-gray-800">
-  <div class="container mx-auto max-w-6xl">
-    <div class="grid md:grid-cols-4 gap-8 mb-12">
-      
-      <!-- Logo and Description -->
-      <div>
-        <div class="flex items-center space-x-3 mb-6">
-          <div class="w-12 h-12 rounded-full bg-gradient-to-br to-umn-light-maroon flex items-center justify-center">
-            <img src="/images/logo2.png" alt="MicroPig Logo" class="h-54 w-40 object-contain" />
-          </div>
-          <div class="hidden md:flex flex-col">
-            <span class="text-xl font-bold text-white">MicroPig</span>
-            <span class="text-xs text-gray-400 tracking-wide">Swine Microbiome Research</span>
-          </div>
-          <div class="md:hidden">
-            <span class="text-2xl font-bold text-white">MicroPig</span>
-          </div>
-        </div>
-        <p class="mb-4 text-sm">
-          Transforming swine health through microbiome science and collaborative research.
-        </p>
-        <p class="text-xs text-gray-500">
-          Our research connects gut microbiome science with practical feeding strategies for healthier, more sustainable pork production.
-        </p>
-      </div>
-      
-      <div>
-        <h5 class="font-bold text-white text-lg mb-4">Quick Links</h5>
-        <ul class="space-y-3">
-          {quickLinks.map(link => (
-            <li>
-              <a href={link.href} class="hover:text-white transition-colors footer-link">
-                {link.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-      
-      <div>
-        <h5 class="font-bold text-white text-lg mb-4">Resources</h5>
-        <ul class="space-y-3">
-          {resourceLinks.map(link => (
-            <li>
-              <a href={link.href} class="hover:text-white transition-colors footer-link">
-                {link.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-      
-      <div>
-        <h5 class="font-bold text-white text-lg mb-4">For Professionals</h5>
-        <ul class="space-y-3">
-          {professionalLinks.map(link => (
-            <li>
-              <a href={link.href} class="hover:text-white transition-colors footer-link">
-                {link.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-
-    <!-- Acknowledgments Section -->
-    <div class="mb-12">
-      <h5 class="text-4xl font-bold text-white mb-4 text-center">Acknowledgments</h5>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center justify-items-center">
+<footer class="pt-12 bg-gray-900 text-gray-400 border-t border-gray-800">
+  <!-- Acknowledgments Section - Now as a prominent banner at the top -->
+  <div class="py-12 px-6 md:px-12 border-b border-gray-800 bg-gray-900/50">
+    <div class="container mx-auto max-w-6xl">
+      <h5 class="text-4xl font-bold text-white mb-8 text-center">Acknowledgments</h5>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center">
         {acknowledgments.map(item => (
-          <a href={item.url} class="sponsor-link p-4 rounded-lg hover:bg-white/5 transition-colors" target="_blank" rel="noopener noreferrer">
-            <img 
-              src={item.logo} 
-              alt={item.name} 
-              class={`${item.width} h-auto mx-auto object-contain filter`} 
-            />
-          </a>
+<a href={item.url} class="sponsor-link p-6 rounded-xl  transition-all duration-300 transform hover:-translate-y-1 w-full flex items-center justify-center h-36 md:h-48" target="_blank" rel="noopener noreferrer">
+  <img 
+  src={item.logo} 
+  alt={item.name} 
+  class="h-auto w-3/2 object-contain mx-auto" 
+/>
+</a>
         ))}
       </div>
     </div>
+  </div>
+  
+  <!-- Main Footer Content -->
+  <div class="py-12 px-6 md:px-12">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <!-- Logo and Description -->
+        <div>
+          <div class="flex items-center space-x-3 mb-6">
+            <div class=" rounded-full bg-gradient-to-br flex items-center justify-center">
+              <img src="/images/logo2.png" alt="MicroPig Logo" class="h-8 w-8 object-contain" />
+            </div>
+            <div class="flex flex-col">
+              <span class="text-xl font-bold text-white">MicroPig</span>
+              <span class="text-xs text-gray-400 tracking-wide">Swine Microbiome Research</span>
+            </div>
+          </div>
+          <p class="mb-4 text-sm">
+            Transforming swine health through microbiome science and collaborative research.
+          </p>
+          <p class="text-xs text-gray-500">
+            Our research connects gut microbiome science with practical feeding strategies for healthier, more sustainable pork production.
+          </p>
+          
+          <!-- Social Media Links -->
+          <div class="flex mt-6 space-x-4">
+            <a href="https://www.linkedin.com/in/sudarioroberto/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-umn-maroon transition-colors duration-300">
+              <i class="fab fa-linkedin-in text-white"></i>
+            </a>
+            <a href="https://github.com/SudarioRoberto" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-umn-maroon transition-colors duration-300">
+              <i class="fab fa-github text-white"></i>
+            </a>
+            <a href="https://www.youtube.com/@nutriNewsInternational" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-umn-maroon transition-colors duration-300">
+              <i class="fab fa-youtube text-white"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h5 class="font-bold text-white text-lg mb-4">Quick Links</h5>
+          <ul class="space-y-3">
+            {quickLinks.map(link => (
+              <li>
+                <a href={link.href} class="hover:text-white transition-colors footer-link flex items-center">
+                  <i class="fas fa-chevron-right text-xs text-umn-gold mr-2"></i>
+                  {link.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <!-- Resources -->
+        <div>
+          <h5 class="font-bold text-white text-lg mb-4">Resources</h5>
+          <ul class="space-y-3">
+            {resourceLinks.map(link => (
+              <li>
+                <a href={link.href} class="hover:text-white transition-colors footer-link flex items-center" target={link.href.startsWith('http') ? "_blank" : undefined} rel={link.href.startsWith('http') ? "noopener noreferrer" : undefined}>
+                  <i class="fas fa-chevron-right text-xs text-umn-gold mr-2"></i>
+                  {link.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+          
+          <!-- Contact Info -->
+          <div class="mt-8">
+            <h5 class="font-bold text-white text-lg mb-4">Contact Us</h5>
+            <div class="space-y-3">
+              <a href="mailto:ssilvaju@umn.edu" class="flex items-start hover:text-white transition-colors">
+                <i class="fas fa-envelope mt-1 text-umn-gold mr-3"></i>
+                <span>ssilvaju@umn.edu</span>
+              </a>
+              <a href="tel:+16126663177" class="flex items-start hover:text-white transition-colors">
+                <i class="fas fa-phone mt-1 text-umn-gold mr-3"></i>
+                <span>(612) 666-3177</span>
+              </a>
+              <div class="flex items-start">
+                <i class="fas fa-map-marker-alt mt-1 text-umn-gold mr-3"></i>
+                <span>Department of Animal Science<br>University of Minnesota</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-      <p>&copy; {currentYear} MicroPig. All rights reserved.</p>
-      <div class="flex gap-6 mt-4 md:mt-0">
-        <a href="/coming-soon" class="hover:text-white transition-colors">Privacy Policy</a>
-        <a href="/coming-soon" class="hover:text-white transition-colors">Terms of Service</a>
-        <a href="/coming-soon" class="hover:text-white transition-colors">Accessibility</a>
+      <!-- Copyright and Legal Links -->
+      <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-sm">&copy; {currentYear} MicroPig. All rights reserved.</p>
+        <div class="flex gap-6 mt-4 md:mt-0 text-sm">
+          <a href="/coming-soon" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="/coming-soon" class="hover:text-white transition-colors">Terms of Service</a>
+          <a href="/coming-soon" class="hover:text-white transition-colors">Accessibility</a>
+        </div>
       </div>
     </div>
   </div>
@@ -142,10 +155,23 @@ const acknowledgments = [
 
 <style>
   .footer-link {
-    transition: color 0.2s ease;
+    transition: all 0.2s ease;
+    display: inline-block;
+    position: relative;
   }
   
   .footer-link:hover {
     color: white;
+    transform: translateX(3px);
+  }
+  
+  .sponsor-link {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .sponsor-link:hover {
+    border-color: rgba(255, 204, 51, 0.3);
+    box-shadow: 0 4px 20px rgba(255, 204, 51, 0.1);
   }
 </style>
