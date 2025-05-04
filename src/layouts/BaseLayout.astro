@@ -8,14 +8,16 @@ const { title, description } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     
-    <!-- Basic favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-   
-    <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    
-    <!-- Android/Chrome -->
-    <link rel="manifest" href="/site.webmanifest" />
+  <!-- Basic favicon (already in your code) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <!-- Add these new favicon links -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  
+  <!-- Web manifest (already in your code) -->
+  <link rel="manifest" href="/site.webmanifest" />
     
     <meta name="generator" content={Astro.generator} />
     <title>{title || "MicroPig | Swine Microbiome Research"}</title>
